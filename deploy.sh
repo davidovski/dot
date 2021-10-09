@@ -35,8 +35,10 @@ load () {
     read confirmation
 
     if [[ $confirmation == "confirm" ]]; then 
-        cp -r config $HOME/.config
-        cp -r scripts $HOME/.scripts
+        mkdir -p $HOME/.config
+        cp -r config/* $HOME/.config
+        mkdir -p $HOME/.scripts
+        cp -r scripts/* $HOME/.scripts
 
         cp bashrc $HOME/.bashrc
         cp bash_aliases $HOME/.bash_aliases

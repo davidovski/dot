@@ -1,0 +1,3 @@
+xrdb ~/.Xdefaults
+exec bspwm
+

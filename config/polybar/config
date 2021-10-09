@@ -1,0 +1,159 @@
+[pos]
+offsetx = 24
+offsety = 24
+
+[color]
+bg = #191919
+bga = #191919
+fg1= #f58d44
+fg2 = #5f819d
+
+
+[bar/base]
+monitor = ${env:MONITOR}
+
+enable-ipc                = true
+font-0                    = mononoki:style=Regular:pixelsize=11;3
+font-1                    = mononoki:style=Regular:pixelsize=15;4
+font-2                    = mononoki:style=Regular:pixelsize=19;5
+font-3                    = mononoki:style=Regular:pixelsize=11;3
+font-4                    = MesloLGM Nerd Font Mono:style=Regular:pixelsize=14;2
+font-5                   = Noto Sans Mono CJK TC:style=Medium,Regular;pixelsize=10;2
+
+height                    = 25
+background                = ${color.bga}
+
+module-margin		  = 1
+wm-restack                = bspwm
+radius                    = 0
+foreground                = ${color.fg1}
+
+padding-right		  = 1
+
+[bar/wsonly]
+inherit			  = bar/base
+width			  = 100%
+modules-left	          = workspaces
+modules-right		  = time
+
+[bar/ws]
+inherit                   = bar/base
+width                     = 100%
+offset-x                  = 0 
+modules-left              = workspaces xwindow
+modules-right		  = mpd temperature memory pulseaudio microphone time
+tray-position		  = right
+background		  = ${color.bga}
+border-size		  = 0
+fg			  = ${color.fg1}
+
+
+[module/wsnumber]
+type                      = custom/script
+exec                      = bspc query -D -d focused --names
+tail                      = true
+interval                  = 0
+format                    = "<label>"
+format-foreground         = ${color.background}
+format-background         = ${color.colorlb}
+format-padding            = 0
+
+[module/xwindow]
+type                      = internal/xwindow
+label                     = %title:0:40:%
+
+[module/workspaces]
+type = internal/xworkspaces
+
+pin-workspaces = true
+
+enable-click = true
+enable-scroll = true
+
+format = <label-state>
+format-padding = 0
+label-monitor = %name%
+label-active             = %{T2}雷%{T-}
+label-active-padding     = 1
+label-occupied            = %{T2}ﲭ%{T-}
+label-occupied-padding    = 1
+label-empty               = %{T2}ﱤ%{T-}
+label-empty-padding       = 1
+
+
+[module/time]
+type                      = internal/date
+interval                  = 10
+time                      = "%H:%M"
+date                      = "%d %b"
+label                     = %{T2}◷%{T-} %time%
+label-padding             = 0
+
+[module/mpd]
+type                      = internal/mpd
+host                      = 127.0.0.1
+port                      = 6600
+
+format-online 		  = <label-song> <icon-prev> <toggle> <icon-next> <bar-progress> 
+label-song 		  = %title%
+
+bar-progress-width = 12 
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+format-online-padding     = 0
+
+format-offline-padding    = 0
+
+label-song-maxlen         = 40
+label-song-ellipsis       = true
+
+icon-play		  =  
+bar-empty = ─
+icon-pause 		  = 
+icon-prev		  = 
+icon-next		  = 
+
+
+[module/pulseaudio]
+type                      = internal/pulseaudio
+
+format-volume             = %{T3}<ramp-volume>%{T-} <label-volume>
+label-volume              = %percentage:3:3%%
+use-ui-max                = false
+interval                  = 3
+
+ramp-volume-0             = ""
+ramp-volume-1             = ""
+ramp-volume-2             = ""
+
+label-muted               = "%{T3} %{T-}--%"
+
+[module/microphone]
+type = custom/script
+exec = pactl list sources | grep -qi 'Mute: yes' && echo "" || echo ""
+interval = 1
+click-left =  pactl list sources | grep -qi 'Mute: yes' && pactl set-source-mute 2 false || pactl set-source-mute 2 true
+
+[module/vpn]
+type = custom/script
+exec = echo vpn
+exec-if = pgrep -x openvpn
+interval = 5
+format-underline = #268bd2
+format-prefix = "🖧 "
+format-prefix-foreground = #5b
+
+[module/temperature]
+type = custom/script
+exec = sensors | awk '/^Tctl:/ { print substr($2, 2) }'
+format-prefix = " "
+interval = 1
+
+[module/memory]
+type = custom/script
+exec = free -h | awk '/^Mem:/ {print $3 "/" $2}'
+interval = 1
+format-prefix = "力 "
+

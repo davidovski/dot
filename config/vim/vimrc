@@ -1,0 +1,34 @@
+set viminfo+=n~/.config/vim/viminfo
+set runtimepath+=~/.config/vim,~/.config/vim/after
+set autoindent
+set wrap
+set linebreak
+set mouse=a
+set autowrite
+
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+set nocompatible
+
+set spelllang=en_gb
+
+set number relativenumber
+
+syntax on 
+
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+inoremap { {}<ESC>ha
+inoremap [ []<ESC>ha
+inoremap " ""<ESC>ha
+inoremap ( ()<ESC>ha
+
+inoremap <C-space> <C-n>
+
+inoremap <C-down> <C-E>
+inoremap <C-up> <C-Y>
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>

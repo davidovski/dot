@@ -1,0 +1,19 @@
+#!/bin/bash
+# Usage: ddc-switch-inputs 1
+case $1 in
+   1 )
+      # Config 1: Main PC
+      OUT=("0x0f" "0x20")
+      ;;
+   2 )
+      # Config 2: Virtual machine
+      OUT=("0x11" "0x21")
+      ;;
+   * )
+      echo "Unknown input '$1'"
+      exit 1
+      ;;
+esac
+
+ddcutil --bus=5 setvcp 60 ${OUT[0]} &
+wait

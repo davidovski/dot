@@ -1,0 +1,2 @@
+#!/bin/sh
+bspc rule -a \* -o state=floating && $TERMINAL -e bc -liq

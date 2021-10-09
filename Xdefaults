@@ -1,0 +1,89 @@
+#define FG #f58f44
+#define BG #191919
+*.foreground: FG 
+URxvt.background: BG
+URxvt.borderColor: BG
+*.cursorColor: FG 
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #b4d6d1
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
+
+! Set depth to make transparency work.
+URxvt*depth: 32
+
+URxvt.font: xft:mononoki:size=10:antialias=true,xft:MesloLGM Nerd Font:size=10,Noto Sans Mono CJK TC:size=10
+
+
+URxvt.boldFont: xft:mononoki:style=bold:size=10,xft:MesloLGM Nerd Font:size=10,Noto Sans Mono CJK TC:size=10
+URxvt.italicFont: xft:mononoki:style=italic:size=10
+URxvt.boldItalicfont: xft:mononoki:style=bolditalic:size=10
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+
+URxvt.internalBorder: 20
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: true
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.pointerBlank: true
+
+
+URxvt.urgentOnBell: true
+URxvt.iso14755: false
+urxvt*dynamicColors: on
+
+
+
+!-- Xft settings -- !
+Xft.dpi:        112
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+URxvt.perl-ext-common: default,matcher,font-size,config-reload
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard 

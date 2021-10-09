@@ -1,0 +1,6 @@
+#!/bin/sh
+
+FOLDER=/home/david/docs/proj/davidovski.xyz/f/meme
+cd $FOLDER
+xdotool type "https://davidovski.xyz/f/meme/$(ls -1 | dmenu)"
+

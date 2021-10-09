@@ -1,0 +1,275 @@
+####################
+# WM independent hotkeys
+####################
+
+# mic
+super + BackSpace
+	pactl list sources | grep -qi 'Mute: yes' && pactl set-source-mute 2 false || pactl set-source-mute 2 true
+
+super + ctrl + alt + f
+	pactl list sources | grep -qi 'Active Port: analog-input-rear-mic' && pactl set-source-port 2 analog-input-front-mic || pactl set-source-port 2 analog-input-rear-mic
+
+#Volume Control
+super + Next
+	amixer -D pulse sset Master 5%-
+super + Prior
+	amixer -D pulse sset Master 5%+
+
+# runner
+super + r
+	rofi -show drun -show-icons  
+
+super + shift + r
+	rofi -show ssh -show-icons
+
+super + ctrl + Tab
+	rofi -show window
+
+super + g
+	$HOME/.scripts/toggle-gap.sh	
+
+super + shift + g
+	$HOME/.scripts/toggle-size-hints.sh
+
+# open terminal
+super + Return 
+	$TERMINAL
+
+# open pdf viewer
+super + z
+		curl --output - $(xsel) | zathura -
+# open video player
+super + v
+	mpv --player-operation-mode=pseudo-gui $(xsel)
+
+# open browser
+super + b
+	$BROWSER
+
+# open email
+super + m
+	$EMAIL_CLIENT
+
+# open file manager
+super + n
+	$FILE_MANAGER
+
+# open audio mixer
+super + semicolon
+	bspc rule -a \* -o state=floating && $TERMINAL -e pulsemixer 
+
+# xkill
+ctrl + alt + Escape
+	xkill
+
+# top
+meta + Escape
+	$TERMINAL -e htop
+
+# screenshot
+super + s
+	/home/david/.scripts/screenshot
+super + shift + s
+	/home/david/.scripts/screenshot_fs
+super + ctrl + s
+	/home/david/.scripts/screenshot_floating
+# lock screen
+super + ctrl + alt + l
+	/home/david/.scripts/lock
+
+# power menu
+super + ctrl + Escape
+	/home/david/.scripts/powermenu
+
+# emoji
+super + ctrl + e
+	/home/david/.scripts/dmenuemoji insert
+
+# kaomoji
+super + ctrl + c
+	/home/david/.scripts/dmenukaomoji insert
+
+# stuff
+super + ctrl + m
+	dmenu -p "i am stuff" | xargs /usr/bin/stuff 
+
+super + ctrl + n
+	dmenu -p "i am big chungus" | xargs /usr/bin/chungus
+
+super + ctrl + t
+	dmenu -p "toilet" | toilet --font mono12 | sed 's/ /_  _ /g' | xclip -selection clipboard
+super + ctrl + b
+	dmenu -p "eminem says" | xargs /usr/bin/eminem
+# memes
+super + ctrl + alt + c
+	/home/david/.scripts/memeselector
+
+# iocane
+super + shift + Return 
+	iocane -i
+
+# switch monitor modes
+super + apostrophe
+	/home/david/.scripts/bg.sh ; /home/david/.config/xrandr.sh
+super + shift + apostrophe
+	/home/david/.scripts/bg.sh ; /home/david/.config/xrandr.alt.sh
+
+# switch monitor input sources
+ctrl + super + apostrophe
+    ddc-switch-inputs 1
+ctrl + super + shift + apostrophe
+    ddc-switch-inputs 2
+
+# dim all but main monitor
+super + alt + c 
+	/home/david/.scripts/cinema.sh
+
+# control gamma
+super + alt + f
+	/home/david/.scripts/gamma.sh 0.8
+super + alt + g
+	/home/david/.scripts/gamma.sh 1.2
+super + alt + r
+	/home/david/.scripts/gamma.sh
+super + alt + t
+	bspc rule -a \* -o state=floating && gamma
+
+# record screen
+super + alt + s
+	.scripts/screenrecord
+
+#bring up calculator
+super + period
+	.scripts/calculator
+
+# web search
+super + slash
+	~/.scripts/websearch
+
+# Calendar
+super + c
+	bspc rule -a \* -o state=floating && $TERMINAL -e calcurse 
+
+super + comma
+	.scripts/notepad
+
+###################
+# mpd server	  #
+###################
+
+# play/pause, prev, next
+super + alt + ctrl + o
+	mpc toggle
+
+super + alt + ctrl + p
+	mpc next 
+
+super + alt + ctrl + i 
+	mpc prev
+super + alt + ctrl + apostrophe
+	mpc shuffle
+# stop
+super + alt + ctrl + BackSpace
+	mpc stop
+
+#ncmpcpp
+super + alt + ctrl + backslash
+	bspc rule -a \* -o state=floating && $TERMINAL -e ncmpcpp 
+
+# chooser
+super + alt + ctrl + slash
+	.scripts/mpc_picker
+# volume
+super + alt + ctrl + Next
+	mpc volume -10
+super + alt + ctrl + Prior
+	mpc volume +10
+
+# show cover art
+super + alt + ctrl + y
+    kunst --music_dir ~/music/ --size 1000x1000
+
+###################
+# bspwm hotkeys
+###################
+
+# quit / restart bspwm
+super + ctrl + {q,r}
+	bspc {quit,wm -r}
+
+# close / kill
+super + {_,shift +}w
+	bspc node -{c,k}
+
+# alternate between tiled and monocle
+#super + m
+	#bspc desktop -l next
+
+#
+# state/flags
+#
+
+# float the window
+super + f
+ if [ -z "$(bspc query -N -n focused.floating)" ]; then \
+        bspc node focused -t floating; \
+    else \
+        bspc node focused -t tiled; \
+    fi
+
+super + ctrl + f
+	bspc node -t \~fullscreen
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the next/previous window in the current desktop
+super + ctrl + {_, shift +} Tab
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + ctrl + {Left,Right}
+	bspc desktop -f {prev,next}.local
+
+# focus the older or newer node in the focus history
+super + {_, shift +} Tab
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1,2,3,4,5,6,7}
+	bspc {desktop -f,node -d} '{a1,a2,a3,a4,a5,a6,a7}'
+super + ctrl + {_,shift + }{1,2,3,4,5}
+	bspc {desktop -f,node -d} '{b1,b2,b3,b4,b5}'
+super + alt + {_,shift + }{1,2,3,4,5}
+	bspc {desktop -f,node -d} '{c1,c2,c3,c4,c5}'
+super + alt + ctrl + {_,shift + }{1,2}
+	bspc {desktop -f,node -d} '{d1,d2}'
+
+
+#Toggle between vertical and horizontal split
+super + alt + Return
+	bspc node @parent -R 90
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+

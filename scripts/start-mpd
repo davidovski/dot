@@ -1,0 +1,3 @@
+#!/bin/sh
+[ ! -s ~/.config/mpd/pid ] && mpd .config/mpd/mpd.conf
+[ -s ~/.config/mpd/pid ] && mpd-rpc --no-idle --fork

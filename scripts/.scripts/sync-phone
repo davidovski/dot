@@ -1,0 +1,9 @@
+#!/bin/sh
+mkdir ~/phone
+jmtpfs ~/phone
+rsync -vr --ignore-existing ~/music/* ~/phone/SanDisk\ SD\ card/Music/
+echo "Synced files, Press enter to unmount"
+read
+umount ~/phone
+rmdir ~/phone
+

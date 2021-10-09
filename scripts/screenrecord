@@ -1,0 +1,3 @@
+#!/bin/bash
+filename=$(date +"/home/david/screenrecord_%F_%T")
+/usr/bin/obs --startrecording --minimize-to-tray --scene main

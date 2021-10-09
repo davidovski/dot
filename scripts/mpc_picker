@@ -1,0 +1,4 @@
+#!/bin/sh
+chosen=$(mpc listall | dmenu -i -p mpd)
+[ "$chosen" != "" ] || exit
+mpc insert "$chosen"

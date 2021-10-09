@@ -1,0 +1,3 @@
+#!/bin/sh
+F="$HOME/docs/proj/scratchpad.txt"
+bspc rule -a \* -o state=floating && $TERMINAL -e vim $F 

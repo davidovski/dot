@@ -10,6 +10,7 @@ save () {
 
     cp -r "$HOME/.scripts" scripts
 
+    cp $HOME/.profile profile
     cp $HOME/.bashrc bashrc
     cp $HOME/.bash_aliases bash_aliases
     cp $HOME/.Xdefaults Xdefaults
@@ -35,6 +36,7 @@ load () {
 
         cp Xdefaults $HOME/.Xdefaults
         cp xinitrc $HOME/.xinitrc
+        cp profile $HOME/.profile
 
         cp -r fonts $HOME/.fonts
 
@@ -47,7 +49,9 @@ load () {
 
 install () {
     PKG="yay -S "
-    $PKG bspwm rofi cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi
+    $PKG xorg xorg-xinit pulseaudio
+    $PKG bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi urxvt
+    ln -s /usr/bin/rofi /usr/bin/dmenu
 }
 
 case $1 in

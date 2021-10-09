@@ -94,7 +94,7 @@ function parse_git_dirty {
         fi
 }
 
-source ~/.scripts/fzf-bash-completion.sh
+source "$HOME/.scripts/fzf-bash-completion.sh"
 
 bind -x '"\C-\t": fzf_bash_completion'
 

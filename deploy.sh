@@ -24,6 +24,10 @@ save () {
     mkdir -p fonts/noto-cjk
     cp -r /usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc fonts/noto-cjk
 
+
+    rm config/mpd/state
+    rm config/vim/viminfo
+
 }
 
 load () {

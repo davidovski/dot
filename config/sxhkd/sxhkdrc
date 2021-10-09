@@ -68,26 +68,26 @@ meta + Escape
 
 # screenshot
 super + s
-	/home/david/.scripts/screenshot
+	$HOME/.scripts/screenshot
 super + shift + s
-	/home/david/.scripts/screenshot_fs
+	$HOME/.scripts/screenshot_fs
 super + ctrl + s
-	/home/david/.scripts/screenshot_floating
+	$HOME/.scripts/screenshot_floating
 # lock screen
 super + ctrl + alt + l
-	/home/david/.scripts/lock
+	$HOME/.scripts/lock
 
 # power menu
 super + ctrl + Escape
-	/home/david/.scripts/powermenu
+	$HOME/.scripts/powermenu
 
 # emoji
 super + ctrl + e
-	/home/david/.scripts/dmenuemoji insert
+	$HOME/.scripts/dmenuemoji insert
 
 # kaomoji
 super + ctrl + c
-	/home/david/.scripts/dmenukaomoji insert
+	$HOME/.scripts/dmenukaomoji insert
 
 # stuff
 super + ctrl + m
@@ -102,7 +102,7 @@ super + ctrl + b
 	dmenu -p "eminem says" | xargs /usr/bin/eminem
 # memes
 super + ctrl + alt + c
-	/home/david/.scripts/memeselector
+	$HOME/.scripts/memeselector
 
 # iocane
 super + shift + Return 
@@ -110,9 +110,9 @@ super + shift + Return
 
 # switch monitor modes
 super + apostrophe
-	/home/david/.scripts/bg.sh ; /home/david/.config/xrandr.sh
+	$HOME/.scripts/bg.sh ; $HOME/.config/xrandr.sh
 super + shift + apostrophe
-	/home/david/.scripts/bg.sh ; /home/david/.config/xrandr.alt.sh
+	$HOME/.scripts/bg.sh ; $HOME/.config/xrandr.alt.sh
 
 # switch monitor input sources
 ctrl + super + apostrophe
@@ -122,15 +122,15 @@ ctrl + super + shift + apostrophe
 
 # dim all but main monitor
 super + alt + c 
-	/home/david/.scripts/cinema.sh
+	$HOME/.scripts/cinema.sh
 
 # control gamma
 super + alt + f
-	/home/david/.scripts/gamma.sh 0.8
+	$HOME/.scripts/gamma.sh 0.8
 super + alt + g
-	/home/david/.scripts/gamma.sh 1.2
+	$HOME/.scripts/gamma.sh 1.2
 super + alt + r
-	/home/david/.scripts/gamma.sh
+	$HOME/.scripts/gamma.sh
 super + alt + t
 	bspc rule -a \* -o state=floating && gamma
 

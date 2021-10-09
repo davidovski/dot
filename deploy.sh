@@ -59,7 +59,7 @@ load () {
 
 install () {
     PKG="yay -S "
-    $PKG xorg xorg-xinit pulseaudio fzf bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi rxvt-unicode
+    $PKG xorg xorg-xinit pulseaudio pulsemixer alsa-utils fzf bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi rxvt-unicode
 
     ln -s /usr/bin/rofi /usr/bin/dmenu
 

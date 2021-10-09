@@ -4,6 +4,8 @@ configurations=( iocane bg bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar
 
 
 save () {
+    mkdir config
+    mkdir scripts 
     for i in "${configurations[@]}"; do
         cp -r "$HOME/.config/$i" config/
     done
@@ -29,7 +31,7 @@ load () {
     read confirmation
 
     if [[ $confirmation == "confirm" ]]; then 
-        cp -r config/* $HOME/.config/
+        cp -r config $HOME/.config
         cp -r scripts $HOME/.scripts
 
         cp bashrc $HOME/.bashrc

@@ -75,7 +75,7 @@ case $1 in
         install
         ;;
     *)
-        echo "USAGE: $0 [load/save]"
+        echo "USAGE: $0 [load/save/install]"
         ;;
 esac
 

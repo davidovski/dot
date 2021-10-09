@@ -59,6 +59,8 @@ install () {
     $PKG xorg xorg-xinit pulseaudio
     $PKG bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi urxvt
     ln -s /usr/bin/rofi /usr/bin/dmenu
+
+    $PKG fzf
 }
 
 case $1 in

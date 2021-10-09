@@ -45,12 +45,20 @@ load () {
     fi
 }
 
+install () {
+    PKG="yay -S "
+    $PKG bspwm rofi cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi
+}
+
 case $1 in
     "load")
         load
         ;;
     "save")
         save
+        ;;
+    "install")
+        install
         ;;
     *)
         echo "USAGE: $0 [load/save]"

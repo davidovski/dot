@@ -21,6 +21,7 @@ save () {
     cp /usr/share/fonts/TTF/Meslo\ LG\ M\ Regular\ Nerd\ Font\ Complete\ Mono.ttf fonts/TTF/
     mkdir -p fonts/noto-cjk
     cp -r /usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc fonts/noto-cjk
+
 }
 
 load () {

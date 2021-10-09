@@ -1,3 +1,4 @@
+alias l="ls -lah"
 alias cls="clear"
 alias cp="cp -v"
 alias gif-for-cli="gif-for-cli -l 0 -c █ --display-mode=truecolor"

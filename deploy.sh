@@ -5,11 +5,11 @@ configurations=( iocane bg bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar
 
 save () {
     mkdir config
-    mkdir scripts 
     for i in "${configurations[@]}"; do
         cp -r "$HOME/.config/$i" config/
     done
 
+    rm -r scripts
     cp -r "$HOME/.scripts" scripts
 
     cp $HOME/.profile profile

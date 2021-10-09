@@ -1,2 +1,0 @@
-#!/bin/sh
-localectl list-x11-keymap-variants us | dmenu -p "kbd layout" | xargs setxkbmap -variant

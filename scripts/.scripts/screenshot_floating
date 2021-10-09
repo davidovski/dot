@@ -1,9 +1,0 @@
- #!/bin/sh
-filename=$(date +"/home/david/pics/screenshot/%F_%T.png")
-maim -su $filename && bspc rule -a \* -o state=floating && feh -Z $filename
-
-
-
-
-
-

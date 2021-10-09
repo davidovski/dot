@@ -47,7 +47,8 @@ load () {
         cp xinitrc $HOME/.xinitrc
         cp profile $HOME/.profile
 
-        cp -r fonts $HOME/.fonts
+        mkdir -p $HOME/fonts
+        cp -r fonts/* $HOME/.fonts
 
         echo "Copied configurations!"
 

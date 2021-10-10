@@ -1,4 +1,2 @@
 #!/bin/bash
-#sleep 0.2
-#scrot -s '/home/david/pics/screenshot/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
-maim -u /dev/stdout |  tee >(xclip -selection clipboard -t image/png) > $(date +"/home/david/pics/screenshot/%F_%T.png")
+maim -u /dev/stdout |  tee >(xclip -selection clipboard -t image/png) > $(date +"$HOME/pics/screenshot/%F_%T.png")

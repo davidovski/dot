@@ -10,10 +10,12 @@ super + ctrl + alt + f
 	pactl list sources | grep -qi 'Active Port: analog-input-rear-mic' && pactl set-source-port 2 analog-input-front-mic || pactl set-source-port 2 analog-input-rear-mic
 
 #Volume Control
-super + Next
+{XF86AudioLowerVolume,super + Next}
 	amixer -D pulse sset Master 5%-
-super + Prior
+{XF86AudioRaiseVolume,super + Prior}
 	amixer -D pulse sset Master 5%+
+{XF86AudioMute}
+	amixer -D pulse set Master 1+ toggle
 
 # runner
 super + r
@@ -161,10 +163,10 @@ super + comma
 super + alt + ctrl + o
 	mpc toggle
 
-super + alt + ctrl + p
+{XF86AudioNext, super + alt + ctrl + p
 	mpc next 
 
-super + alt + ctrl + i 
+{XF86AudioPrev,super + alt + ctrl + i}
 	mpc prev
 super + alt + ctrl + apostrophe
 	mpc shuffle

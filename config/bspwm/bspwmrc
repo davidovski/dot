@@ -17,8 +17,8 @@ bspc monitor HDMI-0 -n D
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 
-/home/david/.config/polybar/launch.sh
-/home/david/.scripts/bg.sh
+$HOME/.config/polybar/launch.sh
+$HOME/.scripts/bg.sh
 
 bspc monitor A -d a1 a2 a3 a4 a5 a6 a7
 bspc monitor B -d b1 b2 b3 b4 b5

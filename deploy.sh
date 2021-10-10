@@ -26,6 +26,7 @@ save () {
 
 
     rm config/mpd/state
+    rm config/mpd/password
     rm config/vim/viminfo
 
 }
@@ -59,7 +60,7 @@ load () {
 
 install () {
     PKG="yay -S "
-    $PKG xorg xorg-xinit pulseaudio pulsemixer alsa-utils pulseaudio-alsa xdg-user-dirs fzf bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi rxvt-unicode zathura zathura-pdf-mupdf pcmanfm
+    $PKG xorg xorg-xinit pulseaudio pulsemixer alsa-utils pulseaudio-alsa xdg-user-dirs fzf bspwm cava neofetch mpd mpv libvdpau-va-gl ncmpcpp vim sxhkd polybar picom rofi rxvt-unicode zathura zathura-pdf-mupdf pcmanfm maim
 
     ln -s /usr/bin/rofi /usr/bin/dmenu
 

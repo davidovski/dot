@@ -76,7 +76,7 @@ super + shift + s
 super + ctrl + s
 	$HOME/.scripts/screenshot_floating
 # lock screen
-super + ctrl + alt + l
+super + alt + l
 	$HOME/.scripts/lock
 
 # power menu

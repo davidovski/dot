@@ -36,7 +36,7 @@ fi
 alias editor=vim
 export TERMINAL="urxvt"
 export BROWSER="/usr/bin/chromium"
-export FILE_MANAGER="/usr/bin/pcmanfm"
+export FILE_MANAGER="/usr/bin/thunar"
 export EMAIL_CLIENT="/usr/bin/thunderbird"
 export BLOG_DIR="/home/david/docs/proj/blog"
 export EDITOR="/usr/bin/vim"

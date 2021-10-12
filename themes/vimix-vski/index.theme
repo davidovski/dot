@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=vimix-vski
+Comment=iksvo's recolour of the vimix theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=vimix-dark-doder
+MetacityTheme=vimix-vski
+IconTheme=Adwaita
+CursorTheme=Adwaita
+ButtonLayout=menu:minimize,maximize,close

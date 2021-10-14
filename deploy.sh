@@ -35,6 +35,8 @@ save () {
 
     rm config/mpd/state
     rm config/mpd/password
+    rm config/mpd/database
+    rm config/mpd/sticker.sql
     rm config/vim/viminfo
 
 }

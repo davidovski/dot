@@ -3,7 +3,7 @@ set runtimepath+=~/.config/vim,~/.config/vim/after
 set autoindent
 set wrap
 set linebreak
-set mouse=a
+set mouse=a 
 set autowrite
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -25,8 +25,8 @@ inoremap ( ()<ESC>ha
 
 inoremap <C-space> <C-n>
 
-inoremap <C-down> <C-E>
-inoremap <C-up> <C-Y>
+nnoremap <S-J> <C-E>
+nnoremap <S-K> <C-Y>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>

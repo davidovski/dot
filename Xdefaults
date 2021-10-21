@@ -47,7 +47,7 @@ URxvt.boldFont: xft:mononoki:style=bold:size=10,xft:MesloLGM Nerd Font:size=10,N
 URxvt.italicFont: xft:mononoki:style=italic:size=10
 URxvt.boldItalicfont: xft:mononoki:style=bolditalic:size=10
 URxvt.letterSpace: 0
-URxvt.lineSpace: 0
+URxvt.lineSpace: -4
 URxvt.geometry: 92x24
 
 URxvt.internalBorder: 20

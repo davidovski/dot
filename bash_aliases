@@ -1,4 +1,5 @@
 alias l="ls -lah"
+
 alias cls="clear"
 alias cp="cp -v"
 alias gif-for-cli="gif-for-cli -l 0 -c █ --display-mode=truecolor"
@@ -39,4 +40,9 @@ alias show-keymap="vim qmk_firmware/keyboards/ergo42/keymaps/iksvo/keymap.c"
 
 configure () {
 	vim ~/.config/$1
+}
+
+bitrate () {
+    mediainfo Aphrodite_-_Superman_\(dnb\).mp3 | grep 'Bit rate  '
+
 }

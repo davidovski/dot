@@ -75,8 +75,9 @@ super + shift + s
 	$HOME/.scripts/screenshot_fs
 super + ctrl + s
 	$HOME/.scripts/screenshot_floating
+
 # lock screen
-super + alt + l
+super + ctrl + l
 	$HOME/.scripts/lock
 
 # power menu
@@ -144,9 +145,11 @@ super + alt + s
 super + period
 	.scripts/calculator
 
-# web search
+# file search and open
 super + slash
-	~/.scripts/websearch
+	bspc rule -a \* -o state=floating && $TERMINAL -e ~/.scripts/fzf_menu.sh
+shift + super + slash
+	bspc rule -a \* -o state=floating && $TERMINAL -e ~/.scripts/fzf_menu.sh 
 
 # Calendar
 super + c

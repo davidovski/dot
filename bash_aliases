@@ -14,11 +14,10 @@ alias settabletscale="tablet 18 155 2 4:3"
 
 alias gosumemory-default="sudo /home/david/.local/share/gosumemory/gosumemory -path /home/david/.local/share/osu-wine/OSU/Songs"
 
-alias yta="youtube-dl --no-mtime --add-metadata --write-thumbnail --no-check-certificate -x -f bestaudio/best"
+alias yta="youtube-dl --no-mtime --add-metadata --no-check-certificate -x -f bestaudio/best"
 
 alias suspend="i3lock-fancy -p -t ''; systemctl suspend"
 
-alias nano="nvim"
 alias vim="nvim"
 #alias tablet2='tablet 18 156 2.4'
 
@@ -46,3 +45,6 @@ bitrate () {
     mediainfo Aphrodite_-_Superman_\(dnb\).mp3 | grep 'Bit rate  '
 
 }
+
+alias syncdir="sudo rsync -rv --no-perms --no-owner --no-group --delete"
+alias chromium-tor="chromium --incognito --proxy-server=socks5://localhost:9050 --user-data-dir=/tmp"

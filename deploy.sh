@@ -38,6 +38,7 @@ save () {
     rm config/mpd/database
     rm config/mpd/sticker.sql
     rm config/vim/viminfo
+    rm -r config/mpv/shaders
 
 }
 

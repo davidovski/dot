@@ -32,8 +32,12 @@ save () {
 
     rm -r icons
     cp -r $HOME/.local/share/icons/pixelfun3 icons/
+    
+    mkdir -p .local/share/
+    cp ~/.local/share/kaomoji .local/share/
 
     rm config/mpd/state
+    rm config/mpd/pid
     rm config/mpd/password
     rm config/mpd/database
     rm config/mpd/sticker.sql
@@ -75,6 +79,7 @@ load () {
     
         mkdir -p $HOME/.local/share/icons
         cp -r icons/* $HOME/.local/share/icons/
+        cp .local/share/kaomoji ~/.local/share/
 
         echo "Copied configurations!"
 

@@ -1,4 +1,4 @@
 #!/bin/sh
 [ ! -s ~/.config/mpd/pid ] && mpd .config/mpd/mpd.conf
-[ -s ~/.config/mpd/pid ] && mpdscribble --conf .config/mpdscribble/mpdscribble.conf
-[ -s ~/.config/mpd/pid ] && mpd-rpc --no-idle --fork
+pidof mpdscribble || mpdscribble --conf .config/mpdscribble/mpdscribble.conf
+pidof mpd-rpc || mpd-rpc --no-idle --fork

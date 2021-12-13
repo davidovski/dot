@@ -20,9 +20,9 @@ pgrep -x picom > /dev/null || picom &
 $HOME/.config/polybar/launch.sh
 $HOME/.scripts/bg.sh
 
-bspc monitor A -d a1 a2 a3 a4 a5 a6 a7
-bspc monitor B -d b1 b2 b3 b4 b5
-bspc monitor C -d c1 c2 c3 c4 c5
+bspc monitor A -d a1 a2 a3 a4 a5 a6 a7 a8 a9
+bspc monitor B -d b1 b2 b3 b4 b5 b6 b7 b8 b9
+bspc monitor C -d c1 c2 c3 c4 c5 c6 c7 c8 c9
 bspc monitor D -d d1 d2
 
 bspc config border_width	2

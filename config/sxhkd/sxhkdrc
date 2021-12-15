@@ -17,6 +17,10 @@ super + ctrl + alt + f
 {XF86AudioMute}
 	amixer -D pulse set Master 1+ toggle
 
+#backlight
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+    xbacklight -{inc,dec} 5
+
 # runner
 super + r
 	rofi -show drun -show-icons  

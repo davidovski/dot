@@ -99,6 +99,5 @@ source "$HOME/.scripts/fzf-bash-completion.sh"
 bind -x '"\C-\t": fzf_bash_completion'
 
 export PS1="\[\e[0;97m\]\w\[\e[0;37m\]\`parse_git_branch\` > \[\e[0;0m\]"
-cd
 
 PATH="/home/david/.mangadl-bash:${PATH}"

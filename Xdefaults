@@ -41,8 +41,6 @@ URxvt.borderColor: BG
 URxvt*depth: 32
 
 URxvt.font: xft:mononoki:size=10:antialias=true,xft:MesloLGM Nerd Font:size=10,Noto Sans Mono CJK TC:size=10
-
-
 URxvt.boldFont: xft:mononoki:style=bold:size=10,xft:MesloLGM Nerd Font:size=10,Noto Sans Mono CJK TC:size=10
 URxvt.italicFont: xft:mononoki:style=italic:size=10
 URxvt.boldItalicfont: xft:mononoki:style=bolditalic:size=10

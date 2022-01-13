@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill ~/.config/bg
+feh --force-aliasing --bg-fill ~/.config/bg

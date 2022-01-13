@@ -14,7 +14,7 @@ alias settabletscale="tablet 18 155 2 4:3"
 
 alias gosumemory-default="sudo /home/david/.local/share/gosumemory/gosumemory -path /home/david/.local/share/osu-wine/OSU/Songs"
 
-alias yta="youtube-dl --no-mtime --add-metadata --no-check-certificate -x -f bestaudio/best"
+alias yta="yt-dlp --no-mtime --add-metadata --no-check-certificate -x -f bestaudio/best"
 
 alias suspend="i3lock-fancy -p -t ''; systemctl suspend"
 
@@ -48,3 +48,14 @@ bitrate () {
 
 alias syncdir="sudo rsync -rv --no-perms --no-owner --no-group --delete"
 alias chromium-tor="chromium --incognito --proxy-server=socks5://localhost:9050 --user-data-dir=/tmp"
+
+alarmclock () {
+    sudo rtcwake -m no -t "$(date -d 'tomorrow 07:00:00' '+%s')" && echo 'set alarm for tomorrow at 7am'
+}
+
+# does tail -f on a dir... bit of a hack
+mutlitail1 () {
+    while true; do
+        f=$(ls -1 --sort time $1| head -1); 
+        tail -$(tput lines) $1/$f; done;
+}

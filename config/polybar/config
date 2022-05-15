@@ -169,8 +169,8 @@ time-format = %H:%M
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 
-label-charging = -%percentage%%
-label-discharging = -%percentage%%
+label-charging = %percentage%%
+label-discharging = %percentage%%
 label-full = %percentage%%
 
 ramp-capacity-0 = 

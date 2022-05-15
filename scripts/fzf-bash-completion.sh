@@ -42,9 +42,9 @@ _fzf_bash_completion_flatten_subshells() {
                 printf '%s\n' "$line$buffer"
                 buffer=
             fi
-        done < <(tac)
+        done < <(cat)
         printf '%s\n' "$buffer"
-    ) | tac
+    ) | cat
 }
 
 _fzf_bash_completion_find_matching_bracket() {

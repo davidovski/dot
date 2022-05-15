@@ -1,2 +1,2 @@
 #!/bin/bash
-maim -su /dev/stdout |  tee >(xclip -selection clipboard -t image/png) > $(date +"$HOME/pics/screenshot/%F_%T.png")
+maim -su /dev/stdout |  tee $(date +"$HOME/pics/screenshot/%F_%T.png") | xclip -selection clipboard -t image/png

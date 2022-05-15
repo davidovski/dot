@@ -1,5 +1,5 @@
 #!/bin/bash
-MAIN_DP=DP-2;  
+MAIN_DP=DP-0;  
 
 v=$1
 

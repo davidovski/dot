@@ -1,2 +1,3 @@
 #!/bin/sh
-i3lock-fancy -p -t ''
+#i3lock-fancy -p -t ''
+slock

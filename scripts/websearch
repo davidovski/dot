@@ -1,14 +1,17 @@
 #!/bin/sh
 
-
-SEARCH_ENGINE="https://search.brave.com/search?q="
-SEARCH_HISTORY=/tmp/.search_history
+browser="links-launcher"
+SEARCH_ENGINE="https://librex.beparanoid.de/search.php?q="
+SEARCH_HISTORY=$HOME/.local/share/search_history
 
 SEARCH=$(cat $SEARCH_HISTORY | dmenu -p "search")
 
-touch $SEARCH_HISTORY
+echo "$SEARCH" >> $SEARCH_HISTORY
 
-cat <<< "$SEARCH
-$(cat $SEARCH_HISTORY)" > $SEARCH_HISTORY
+query=$(echo $SEARCH | sed 's/ /+/g')
 
-brave "$SEARCH_ENGINE$SEARCH"
+echo $query | grep -q '(?=^.{5,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)' && {
+    links-launcher "$query"
+} ||  {
+    links-launcher "$SEARCH_ENGINE$query"
+}

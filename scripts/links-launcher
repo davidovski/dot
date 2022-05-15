@@ -1,0 +1,10 @@
+#!/bin/sh
+
+startpage=${1:-https://search.davidovski.xyz/}
+
+bin="$(which links || which xlinks)"
+
+[ "${#DISPLAY}" = "0" ] || opts="-g -html-g-text-color 0xf58f44 -html-g-background-color 0x191919 -font /home/david/.fonts/ttf-mononoki/mononoki-Regular.ttf"
+
+$bin $opts $startpage 
+

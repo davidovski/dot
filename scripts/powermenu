@@ -1,2 +1,3 @@
 #!/bin/sh
+
 printf "suspend\nreboot\npoweroff\nhibernate" | rofi -dmenu -p "systemctl" | xargs -r systemctl

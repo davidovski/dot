@@ -40,13 +40,12 @@ URxvt.borderColor: BG
 ! Set depth to make transparency work.
 URxvt*depth: 32
 
-URxvt.font: xft:mononoki:size=10:antialias=true,xft:MesloLGM Nerd Font:size=10,Noto Sans Mono CJK TC:size=10
-URxvt.boldFont: xft:mononoki:style=bold:size=10,xft:MesloLGM Nerd Font:size=10,Noto Sans Mono CJK TC:size=10
-URxvt.italicFont: xft:mononoki:style=italic:size=10
-URxvt.boldItalicfont: xft:mononoki:style=bolditalic:size=10
+URxvt.font: xft:mononoki:minispace=False:size=10:antialias=true,xft:MesloLGM Nerd Font:minispace=False:size=10,Noto Sans Mono CJK TC:minispace=False:size=10
+URxvt.boldFont: xft:mononoki:minispace=False:style=bold:size=10,xft:MesloLGM Nerd Font:minispace=False:size=10,Noto Sans Mono CJK TC:minispace=False:size=10
+URxvt.italicFont: xft:mononoki:minispace=False:style=italic:size=10
+URxvt.boldItalicfont: xft:mononoki:minispace=False:style=bolditalic:size=10
 URxvt.letterSpace: 0
 URxvt.lineSpace: -4
-URxvt.geometry: 92x24
 
 URxvt.internalBorder: 20
 URxvt.cursorBlink: true
@@ -55,7 +54,7 @@ URxvt.saveline: 2048
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.pointerBlank: true
-
+URxvt.geometry: 92x24
 
 URxvt.urgentOnBell: true
 URxvt.iso14755: false

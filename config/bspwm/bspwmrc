@@ -6,26 +6,17 @@ COLOR_SECONDARY="#5977b3"
 
 xsetroot -cursor_name left_ptr &
 xrdb ~/.Xdefaults
-bash $HOME/.config/xrandr.alt.sh
 
-
-bspc monitor DP-2 -n A
-bspc monitor DP-1 -n B
-bspc monitor DP-4 -n C
-bspc monitor HDMI-0 -n D
+bspc monitor  -d a1 a2 a3 a4 a5 a6 a7 a8 a9
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
+pgrep -x xss-lock > /dev/null || xss-lock slock &
 
 $HOME/.config/polybar/launch.sh
 $HOME/.scripts/bg.sh
 
-bspc monitor A -d a1 a2 a3 a4 a5 a6 a7 a8 a9
-bspc monitor B -d b1 b2 b3 b4 b5 b6 b7 b8 b9
-bspc monitor C -d c1 c2 c3 c4 c5 c6 c7 c8 c9
-bspc monitor D -d d1 d2
-
-bspc config border_width	2
+bspc config border_width	1
 bspc config window_gap		0
 
 bspc config focus_follows_pointer false
@@ -35,4 +26,6 @@ bspc config active_border_color "$COLOR_BACKGROUND"
 bspc config focused_border_color "$COLOR_PRIMARY"
 wmname bspwm 
 
-sleep 1; $HOME/.scripts/start-mpd
+urxvt &
+
+$HOME/.scripts/start-mpd

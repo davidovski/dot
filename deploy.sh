@@ -1,11 +1,11 @@
 #!/bin/sh
 
-configurations=( iocane bg bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0)
+configurations="iocane bg bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0"
 
 
 save () {
     mkdir config
-    for i in "${configurations[@]}"; do
+    for i in ${configurations}; do
         cp -r "$HOME/.config/$i" config/
     done
 
@@ -13,8 +13,8 @@ save () {
     cp -r "$HOME/.scripts" scripts
 
     cp $HOME/.profile profile
-    cp $HOME/.bashrc bashrc
-    cp $HOME/.bash_aliases bash_aliases
+    cp $HOME/.mkshrc mkshrc
+    cp $HOME/.sh_aliases sh_aliases
     cp $HOME/.Xdefaults Xdefaults
     cp $HOME/.xinitrc xinitrc
 
@@ -56,8 +56,8 @@ load () {
         mkdir -p $HOME/.scripts
         cp -r scripts/* $HOME/.scripts
 
-        cp bashrc $HOME/.bashrc
-        cp bash_aliases $HOME/.bash_aliases
+        cp mkshrc $HOME/.mkshrc
+        cp sh_aliases $HOME/.sh_aliases
 
         cp Xdefaults $HOME/.Xdefaults
         cp xinitrc $HOME/.xinitrc

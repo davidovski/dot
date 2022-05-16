@@ -1,16 +1,16 @@
 [pos]
-offsetx = 24
-offsety = 24
+offsetx                   = 24
+offsety                   = 24
 
 [color]
-bg = #191919
-bga = #191919
-fg1= #f58d44
-fg2 = #5f819d
+bg                        = #191919
+bga                       = #191919
+fg1                       = #f58d44
+fg2                       = #5f819d
 
 
 [bar/base]
-monitor = ${env:MONITOR}
+monitor                   = ${env:MONITOR}
 
 enable-ipc                = true
 font-0                    = mononoki:style=Regular:pixelsize=11;3
@@ -18,34 +18,34 @@ font-1                    = mononoki:style=Regular:pixelsize=15;4
 font-2                    = mononoki:style=Regular:pixelsize=19;5
 font-3                    = mononoki:style=Regular:pixelsize=11;3
 font-4                    = MesloLGM Nerd Font Mono:style=Regular:pixelsize=14;2
-font-5                   = Noto Sans Mono CJK TC:style=Medium,Regular;pixelsize=10;2
+font-5                    = Noto Sans Mono CJK TC:style=Medium,Regular;pixelsize=10;2
 
 height                    = 25
 background                = ${color.bga}
 
-module-margin		  = 1
+module-margin             = 1
 wm-restack                = bspwm
 radius                    = 0
 foreground                = ${color.fg1}
 
-padding-right		  = 1
+padding-right             = 1
 
 [bar/wsonly]
-inherit			  = bar/base
-width			  = 100%
+inherit                   = bar/base
+width                     = 100%
 modules-left	          = workspaces
-modules-right		  = time
+modules-right             = time
 
 [bar/ws]
 inherit                   = bar/base
 width                     = 100%
 offset-x                  = 0 
 modules-left              = workspaces xwindow
-modules-right		  = mpd temperature memory wlan battery pulseaudio microphone time
-tray-position		  = right
-background		  = ${color.bga}
-border-size		  = 0
-fg			  = ${color.fg1}
+modules-right             = mpd temperature memory wlan battery pulseaudio microphone time
+tray-position             = right
+background                = ${color.bga}
+border-size               = 0
+fg                        = ${color.fg1}
 
 
 [module/wsnumber]
@@ -63,22 +63,24 @@ type                      = internal/xwindow
 label                     = %title:0:40:%
 
 [module/workspaces]
-type = internal/xworkspaces
+type                      = internal/xworkspaces
 
-pin-workspaces = true
+pin-workspaces            = true
 
-enable-click = true
-enable-scroll = true
+enable-click              = true
+enable-scroll             = true
 
-format = <label-state>
-format-padding = 0
-label-monitor = %name%
-label-active             = %{T2}雷%{T-}
-label-active-padding     = 1
+format                    = <label-state>
+format-padding            = 0
+label-monitor             = %name%
+label-active              = %{T2}雷%{T-}
+label-active-padding      = 1
 label-occupied            = %{T2}ﲭ%{T-}
 label-occupied-padding    = 1
 label-empty               = %{T2}ﱤ%{T-}
 label-empty-padding       = 1
+label-urgent              = %{T2}ﲭ%{T-}
+label-urgent-padding      = 1
 
 
 [module/time]
@@ -94,13 +96,13 @@ type                      = internal/mpd
 host                      = 127.0.0.1
 port                      = 6600
 
-format-online 		  = <label-song> <icon-prev> <toggle> <icon-next> <bar-progress> 
-label-song 		  = %title%
+format-online             = <label-song> <icon-prev> <toggle> <icon-next> <bar-progress> 
+label-song                = %title%
 
-bar-progress-width = 12 
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
+bar-progress-width        = 12 
+bar-progress-indicator    = |
+bar-progress-fill         = ─
+bar-progress-empty        = ─
 
 format-online-padding     = 0
 
@@ -109,11 +111,11 @@ format-offline-padding    = 0
 label-song-maxlen         = 40
 label-song-ellipsis       = true
 
-icon-play		  =  
-bar-empty = ─
-icon-pause 		  = 
-icon-prev		  = 
-icon-next		  = 
+icon-play		          =  
+bar-empty                 = ─
+icon-pause 		          = 
+icon-prev		          = 
+icon-next		          = 
 
 
 [module/pulseaudio]
@@ -131,71 +133,71 @@ ramp-volume-2             = ""
 label-muted               = "%{T3} %{T-}--%"
 
 [module/microphone]
-type = custom/script
-exec = pactl list sources | grep -qi 'Mute: yes' && echo "" || echo ""
-interval = 1
-click-left =  pactl list sources | grep -qi 'Mute: yes' && pactl set-source-mute 2 false || pactl set-source-mute 2 true
+type                      = custom/script
+exec                      = pactl list sources | grep -qi 'Mute: yes' && echo "" || echo ""
+interval                  = 1
+click-left                = pactl list sources | grep -qi 'Mute: yes' && pactl set-source-mute 2 false || pactl set-source-mute 2 true
 
 [module/vpn]
-type = custom/script
-exec = echo vpn
-exec-if = pgrep -x openvpn
-interval = 5
-format-underline = #268bd2
-format-prefix = "🖧 "
-format-prefix-foreground = #5b
+type                      = custom/script
+exec                      = echo vpn
+exec-if                   = pgrep -x openvpn
+interval                  = 5
+format-underline          = #268bd2
+format-prefix             = "🖧 "
+format-prefix-foreground  = #5b
 
 [module/temperature]
-type = custom/script
-exec = sensors | awk '/^Tctl:/ { print substr($2, 2) }'
-format-prefix = " "
-interval = 1
+type                      = custom/script
+exec                      = sensors | awk '/^Tctl:/ { print substr($2, 2) }'
+format-prefix             = " "
+interval                  = 1
 
 [module/memory]
-type = custom/script
-exec = free -h | awk '/^Mem:/ {print $3 "/" $2}'
-interval = 1
-format-prefix = "力 "
+type                      = custom/script
+exec                      = free -h | awk '/^Mem:/ {print $3 "/" $2}'
+interval                  = 1
+format-prefix             = "力 "
 
 [module/battery]
-type = internal/battery
-full-at = 99
-battery = BAT1
-adapter = ADP1
+type                      = internal/battery
+full-at                   = 99
+battery                   = BAT1
+adapter                   = ADP1
 
-poll-interval = 3
-time-format = %H:%M
+poll-interval             = 3
+time-format               = %H:%M
 
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
+format-charging           = <animation-charging> <label-charging>
+format-discharging        = <ramp-capacity> <label-discharging>
 
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full = %percentage%%
+label-charging            = %percentage%%
+label-discharging         = %percentage%%
+label-full                = %percentage%%
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0           = 
+ramp-capacity-1           = 
+ramp-capacity-2           = 
+ramp-capacity-3           = 
+ramp-capacity-4           = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0      = 
+animation-charging-1      = 
+animation-charging-2      = 
+animation-charging-3      = 
+animation-charging-4      = 
 animation-charging-framerate = 750
 
 [module/network]
-type = internal/network
-interface = wlan1
-udspeed-minwidth = 5
-accumulate-stats = true
-unknown-as-up = true
-format-connected = <label-connected>
-format-disconnected = <label-disconnected>
+type                      = internal/network
+interface                 = wlan0
+udspeed-minwidth          = 5
+accumulate-stats          = true
+unknown-as-up             = true
+format-connected          = <label-connected>
+format-disconnected       = <label-disconnected>
 
-format-packetloss = <label-connected>
+format-packetloss         = <label-connected>
 
-label-connected = %essid% 
+label-connected           = %essid% 
 

@@ -50,7 +50,7 @@ load () {
     printf "\033[31mWARNING THIS WILL REPLACE EXISTING CONFIGURATIONS\n\033[0mTo proceed type 'confirm': "
     read confirmation
 
-    if [[ $confirmation == "confirm" ]]; then 
+    if [ $confirmation = "confirm" ]; then 
         mkdir -p $HOME/.config
         cp -r config/* $HOME/.config
         mkdir -p $HOME/.scripts

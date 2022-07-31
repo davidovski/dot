@@ -15,5 +15,5 @@ case $1 in
       ;;
 esac
 
-ddcutil --bus=5 setvcp 60 ${OUT[0]} &
+ddcutil --bus=23 setvcp 60 ${OUT[0]} &
 wait

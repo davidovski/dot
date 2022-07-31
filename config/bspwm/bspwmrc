@@ -1,13 +1,34 @@
 #!/bin/sh
 
+setup=1
+
 COLOR_BACKGROUND="#151515"
 COLOR_PRIMARY="#f58f44"
 COLOR_SECONDARY="#5977b3"
 
 xsetroot -cursor_name left_ptr &
 xrdb ~/.Xdefaults
+bash $HOME/.config/xrandr.xi.sh
 
-bspc monitor  -d a1 a2 a3 a4 a5 a6 a7 a8 a9
+if [ "$setup" = "0" ]; then
+    bspc monitor DP-0 -n A
+    bspc monitor A -d a1 a2 a3 a4 a5 a6 a7 a8 a9
+    bspc monitor DP-3 -n B
+    bspc monitor B -d b1 b2 b3 b4 b5 b6 b7 b8 b9
+    bspc monitor DP-4 -n C
+    bspc monitor C -d c1 c2 c3 c4 c5 c6 c7 c8 c9
+    bspc monitor HDMI-0 -n D
+    bspc monitor D -d d1 d2
+else
+    bspc monitor DP-3 -n A
+    bspc monitor A -d a1 a2 a3 a4 a5 a6 a7 a8 a9
+    bspc monitor DP-1 -n B
+    bspc monitor B -d b1 b2 b3 b4 b5 b6 b7 b8 b9
+    bspc monitor DP-2 -n C
+    bspc monitor C -d c1 c2 c3 c4 c5 c6 c7 c8 c9
+    bspc monitor HDMI-1 -n D
+    bspc monitor D -d d1 d2
+fi
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
@@ -28,4 +49,4 @@ wmname bspwm
 
 urxvt &
 
-$HOME/.scripts/start-mpd
+sleep 1; $HOME/.scripts/start-mpd

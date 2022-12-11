@@ -1,6 +1,6 @@
 #!/bin/sh
 
-configurations="iocane bg bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0"
+configurations="iocane bg bg.gif bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0"
 
 
 save () {

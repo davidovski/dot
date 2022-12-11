@@ -1,4 +1,4 @@
-#define FG #f58f44
+#define FG #fefefe
 #define BG #191919
 *.foreground: FG 
 URxvt.background: BG

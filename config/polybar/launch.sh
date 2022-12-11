@@ -11,14 +11,11 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 0.1; done
 
 #MONITOR=DP-0 polybar --reload  wsonly &
 
-export MONITOR=DP-1
-polybar wsonly &
-
-export MONITOR=DP-2
-polybar wsonly &
-
-export MONITOR=HDMI-1
-polybar wsonly &
-
-export MONITOR=DP-3
-polybar ws &
+polybar -m | while read -r mon; do
+    export MONITOR=$(echo $mon | cut -d: -f1)
+    echo $mon | grep -q "(primary)" && {
+        polybar ws &
+    } || {
+        polybar wsonly &
+    }
+done

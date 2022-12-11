@@ -1,41 +1,34 @@
 #!/bin/sh
 
-setup=1
+setup=0
 
-COLOR_BACKGROUND="#151515"
-COLOR_PRIMARY="#f58f44"
-COLOR_SECONDARY="#5977b3"
+COLOR_BACKGROUND="#191919"
+COLOR_PRIMARY="#fefefe"
+COLOR_SECONDARY="#f58f44"
 
 xsetroot -cursor_name left_ptr &
 xrdb ~/.Xdefaults
-bash $HOME/.config/xrandr.xi.sh
-
-if [ "$setup" = "0" ]; then
-    bspc monitor DP-0 -n A
-    bspc monitor A -d a1 a2 a3 a4 a5 a6 a7 a8 a9
-    bspc monitor DP-3 -n B
-    bspc monitor B -d b1 b2 b3 b4 b5 b6 b7 b8 b9
-    bspc monitor DP-4 -n C
-    bspc monitor C -d c1 c2 c3 c4 c5 c6 c7 c8 c9
-    bspc monitor HDMI-0 -n D
-    bspc monitor D -d d1 d2
-else
-    bspc monitor DP-3 -n A
-    bspc monitor A -d a1 a2 a3 a4 a5 a6 a7 a8 a9
-    bspc monitor DP-1 -n B
-    bspc monitor B -d b1 b2 b3 b4 b5 b6 b7 b8 b9
-    bspc monitor DP-2 -n C
-    bspc monitor C -d c1 c2 c3 c4 c5 c6 c7 c8 c9
-    bspc monitor HDMI-1 -n D
-    bspc monitor D -d d1 d2
-fi
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x picom > /dev/null || picom &
 pgrep -x xss-lock > /dev/null || xss-lock slock &
+pgrep -x bg.sh > /dev/null || $HOME/.scripts/bg.sh > /dev/null &
 
-$HOME/.config/polybar/launch.sh
-$HOME/.scripts/bg.sh
+[ -f "$HOME/.config/xrandr.sh" ] && . $HOME/.config/xrandr.sh
+
+primary=$(bspc query --monitors -m primary)
+set -- a b c d e f g h i j k l m n o 
+for m in $primary $(bspc query -M | grep -v $primary); do
+    echo "adding monitor $m as $1"
+    bspc monitor $m -n $1 
+    shift 1
+done
+
+for m in $(bspc query -M --names); do
+    bspc monitor $m -d ${m}1 ${m}2 ${m}3 ${m}4 ${m}5 ${m}6 ${m}7 ${m}8 ${m}9
+done
+
+
+$HOME/.config/polybar/launch.sh &
 
 bspc config border_width	1
 bspc config window_gap		0

@@ -4,13 +4,13 @@ gtk-color-scheme = "text_color:#c5c8c6\nbase_color:#191919"
 # Foreground/background
 gtk-color-scheme = "fg_color:#c5c8c6\nbg_color:#191919"
 # Selected foreground/background
-gtk-color-scheme = "selected_fg_color:#191919\nselected_bg_color:#f58f44"
+gtk-color-scheme = "selected_fg_color:#191919\nselected_bg_color:#707880"
 # Titlebar foreground/background
-gtk-color-scheme = "titlebar_fg_color:#f58f44\ntitlebar_bg_color:#191919"
+gtk-color-scheme = "titlebar_fg_color:#707880\ntitlebar_bg_color:#191919"
 # Links
 gtk-color-scheme = "link_color:#5f819d\nvisited_link_color:#85678f"
 # Panel
-gtk-color-scheme = "topbar_bg_color:#191919\ntopbar_fg_color:#f58f44"
+gtk-color-scheme = "topbar_bg_color:#191919\ntopbar_fg_color:#707880"
 
 # Set GTK settings
 gtk-auto-mnemonics              = 1

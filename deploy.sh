@@ -19,10 +19,10 @@ save () {
     cp $HOME/.xinitrc xinitrc
 
     mkdir -p fonts/TTF
-    cp -r /usr/share/fonts/ttf-mononoki fonts/
-    cp /usr/share/fonts/TTF/Meslo\ LG\ M\ Regular\ Nerd\ Font\ Complete\ Mono.ttf fonts/TTF/
+    cp -r $HOME/.fonts/ttf-mononoki fonts/
+    cp $HOME/.fonts/TTF/Meslo\ LG\ M\ Regular\ Nerd\ Font\ Complete\ Mono.ttf fonts/TTF/
     mkdir -p fonts/noto-cjk
-    cp -r /usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc fonts/noto-cjk
+    cp -r $HOME/.fonts/noto-cjk/NotoSansCJK-Regular.ttc fonts/noto-cjk
     
     cp $HOME/.gtkrc-2.0 gtkrc-2.0
 

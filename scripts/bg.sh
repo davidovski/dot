@@ -12,7 +12,7 @@ convert -coalesce $image $dir/%05d.png
 printf "done\n"
 
 amount_of_frames=$(ls -1 "$dir" | wc -l)
-frames_per_second=30
+frames_per_second=10
 speed=$(echo "scale=3; ($amount_of_frames/$frames_per_second) * (1/$frames_per_second)" | bc -l)
 
 while : ; do 

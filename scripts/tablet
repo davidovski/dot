@@ -19,23 +19,22 @@ tablet_ratio = (lambda s: float(s[0]) / float(s[1]))(sys.argv[4].split(":")) if 
 #]
 
 screens = [
-	(0, 0, 1280, 1024),
-	(1280, 0, 2560, 1440),
-	(3840, 0, 1920, 1080),
-	(5760, 0, 1920, 1080),
+	(0, 0, 1920, 1080),
+	(0, 1080, 1920, 1080),
+	(1920, 1080, 2560, 1440),
 ]
 
 #TODO find this with xrandr
 
-target = screens[1]
+target = screens[2]
 
 #Physical offset of the selected screen
 offsetx = target[0]
 offsety = target[1]
 
 #Size of the full screen areas
-sh = 1920
-sw = 1280 + 2560 + 1080 + 1080
+sh = 1080+ 1440
+sw = 1920 + 2560
 #TODO calculate using list of screens
 
 #Aspect ratio of the tablet, to avoid weird scaling problems

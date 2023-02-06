@@ -50,6 +50,8 @@ function parse_git_dirty {
         [ ! "${bits}" == "" ] && echo " ${bits}" || echo ""
 }
 
+#set -o vi
+
 bind '^L=clear-screen'
 
 export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/\~}\e[0;37m\`parse_git_branch\` > \e[0;0m")

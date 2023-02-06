@@ -162,8 +162,8 @@ format-prefix = "力 "
 [module/battery]
 type = internal/battery
 full-at = 99
-battery = BAT1
-adapter = ADP1
+battery = BAT0
+adapter = AC
 
 poll-interval = 3
 time-format = %H:%M
@@ -171,8 +171,8 @@ time-format = %H:%M
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 
-label-charging = -%percentage%%
-label-discharging = -%percentage%%
+label-charging = +%percentage%%
+label-discharging = %percentage%%
 label-full = %percentage%%
 
 ramp-capacity-0 = 

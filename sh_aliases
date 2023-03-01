@@ -16,7 +16,7 @@ alias settabletscale="tablet 18 155 2 4:3"
 
 alias gosumemory-default="sudo /home/david/.local/share/gosumemory/gosumemory -path /home/david/.local/share/osu-wine/OSU/Songs"
 
-alias yta="yt-dlp --no-mtime --add-metadata --no-check-certificate -x -f bestaudio/best"
+alias yta="yt-dlp --no-mtime --add-metadata --no-check-certificate --embed-thumbnail -x -f bestaudio/best"
 
 alias suspend="i3lock-fancy -p -t ''; systemctl suspend"
 

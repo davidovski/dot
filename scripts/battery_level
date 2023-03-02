@@ -1,0 +1,4 @@
+#!/bin/sh
+full=$(cat /sys/class/power_supply/BAT0/charge_now) 
+now=$(cat /sys/class/power_supply/BAT0/charge_full)
+echo $full / $now  \* 100 | bc -l

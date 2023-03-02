@@ -1,3 +1,3 @@
 #!/bin/sh
-file=$(fzf $@)
+file="$(fzf $@)"
 xdg-open $file &

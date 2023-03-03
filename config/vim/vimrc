@@ -32,3 +32,90 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 nnoremap <F9> :w<Enter>:!chmod<Space>+x<Space>"%:p"<Enter>:!"%:p"<Enter>
+
+set foldmethod=syntax
+set foldlevel=99
+set conceallevel=2
+
+call plug#begin()
+
+Plug 'preservim/nerdtree'
+nnoremap <F5> :NERDTree<CR>
+
+Plug 'preservim/vim-markdown'
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_frontmatter = 1
+"let g:vim_markdown_toml_frontmatter = 1
+"let g:vim_markdown_json_frontmatter = 1
+
+
+Plug 'neoclide/coc.nvim'
+
+set updatetime=300
+set signcolumn=yes
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+" nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', '.']
+
+Plug 'junegunn/fzf.vim'
+
+nnoremap <F6> :Files<CR>
+nnoremap <F7> :Rg<CR>
+
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+
+call plug#end()
+
+highlight Pmenu ctermbg=black guibg=black ctermfg=white
+
+

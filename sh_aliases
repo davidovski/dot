@@ -73,5 +73,5 @@ passthrough_disable () {
 passthrough_enable () {
     sudo mv /etc/modprobe.d/vfio.conf /etc/modprobe.d/vfio.conf.disabled
 }
-alias links="xlinks -g -html-g-text-color 0xf58f44 -html-g-background-color 0x191919 -font /home/david/.fonts/ttf-mononoki/mononoki-Regular.ttf"
+alias links="links -g -html-g-text-color 0xfefefe -html-g-background-color 0x191919 -font /home/david/.fonts/ttf-mononoki/mononoki-Regular.ttf"
 alias weechat="weechat -d ~/.weechat"

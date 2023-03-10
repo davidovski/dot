@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import sys
+import numpy as np
+import os
 
 if len(sys.argv) < 3:
     print("Usage: tablet [dev number] [property number] [scale factor] [aspect ratio]")
@@ -43,6 +45,10 @@ tw = target[2]
 th = tw / tablet_ratio
 print(tw, "x", th)
 
+if "-r" in sys.argv or "-l" in sys.argv:
+    th = target[2] 
+    tw = th / tablet_ratio
+
 #make a variable that will try to make the scale the same over diferent resoultions
 f = target[3] / target[3]
 print ("f value =", f)
@@ -64,6 +70,18 @@ c3 = oy  / sh
 
 print(str(c0), "0", str(c1), "0", str(c2), str(c3), "0 0 1")
 
-import os
-os.system(" ".join(["xinput set-prop", dev, prop, str(c0), "0", str(c1), "0", str(c2), str(c3), "0 0 1"]))
+transform = np.matrix([[c0, 0, c1], [0, c2, c3], [0, 0, 1]])
+
+leftrotate = np.matrix([[0, -1, 1], [1, 0, 0], [0, 0, 1]])
+rightrotate = np.matrix([[0, 1, 0], [-1, 0, 1], [0, 0, 1]])
+
+if "-r" in sys.argv:
+    transform *= rightrotate
+if "-l" in sys.argv:
+    transform *= leftrotate
+
+arr = np.squeeze(np.asarray(transform))
+
+
+os.system(" ".join(["xinput set-prop", dev, prop, " ".join([str(x) for x in [arr[0, 0], arr[0, 1], arr[0, 2], arr[1, 0], arr[1, 1], arr[1, 2], arr[2, 0], arr[2, 1], arr[2, 2]]])]))
 #alias tablet2="xinput set-prop 18 156 2.45 0 -0.725 0 2.45 -0.725 0 0 1"

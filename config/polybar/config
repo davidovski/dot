@@ -149,7 +149,7 @@ format-prefix-foreground = #5b
 
 [module/temperature]
 type = custom/script
-exec = sensors | awk '/^Tctl:/ { print substr($2, 2) }'
+exec = sensors | awk '/^Core 0:/ { print substr($3, 2) }'
 format-prefix = " "
 interval = 1
 

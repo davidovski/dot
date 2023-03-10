@@ -3,7 +3,7 @@
 #define font1 xft:mononoki:minispace=False:size=10:antialias=true
 #define font2 xft:MesloLGM Nerd Font Mono:minispace=False:size=10
 #define font3 xft:Noto Sans Mono CJK TC:minispace=False:size=10
-#define font4 xft:Twemoji:minispace=False:size=10
+#define font4 xft:Noto Color Emoji:style=regular:size=10
 *.foreground: FG 
 URxvt.background: BG
 URxvt.borderColor: BG

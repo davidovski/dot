@@ -1,7 +1,8 @@
 #!/bin/sh
 
-browser="links-launcher"
-SEARCH_ENGINE="https://librex.beparanoid.de/search.php?q="
+default_browser="links-launcher"
+BROWSER=${BROWSER:-$default_browser}
+SEARCH_ENGINE="https://search.davidovski.xyz/search.php?q="
 SEARCH_HISTORY=$HOME/.local/share/search_history
 
 SEARCH=$(cat $SEARCH_HISTORY | dmenu -p "search")
@@ -11,7 +12,7 @@ echo "$SEARCH" >> $SEARCH_HISTORY
 query=$(echo $SEARCH | sed 's/ /+/g')
 
 echo $query | grep -q '(?=^.{5,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)' && {
-    links-launcher "$query"
+    $BROWSER "$query"
 } ||  {
-    links-launcher "$SEARCH_ENGINE$query"
+    $BROWSER "$SEARCH_ENGINE$query"
 }

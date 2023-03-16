@@ -85,6 +85,10 @@ load () {
         mkdir -p ~/.urxvt/ext/
         cp /tmp/urxvt-resize-font/resize-font ~/.urxvt/ext/
 
+        cd slock
+        ./deploy.sh
+        cd -
+
         echo "Copied configurations!"
 
     else

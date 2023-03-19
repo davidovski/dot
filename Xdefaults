@@ -49,7 +49,7 @@ URxvt.boldFont: font1:style=bold,font2:style=bold,font3:style=bold,font4
 URxvt.italicFont:font1:style=italic,font2:style=italic,font3:style=italic,font4
 URxvt.boldItalicfont: font1:style=bolditalic,font2:style=bolditalic,font3:style=bolditalic,font4
 URxvt.letterSpace: 0
-URxvt.lineSpace: -4
+URxvt.lineSpace: 0
 
 URxvt.internalBorder: 20
 URxvt.cursorBlink: true

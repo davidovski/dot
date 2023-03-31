@@ -1,6 +1,6 @@
 #!/bin/sh
 
-configurations="iocane bg bg.gif bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0"
+configurations="iocane bg bg.gif bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0 zathura"
 
 
 save () {
@@ -41,7 +41,7 @@ save () {
     rm config/mpd/password
     rm config/mpd/database
     rm config/mpd/sticker.sql
-    rm config/vim/viminfo
+    rm config/vim/viminfo*
     rm -r config/mpv/shaders
 
 }

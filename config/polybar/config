@@ -7,7 +7,7 @@ bg = #191919
 bga = #191919
 fg4= #f58d44
 fg2 = #5f819d
-fg3 = #373b41
+fg3 = #707880
 fg1 = #fefefe
 
 
@@ -40,13 +40,15 @@ modules-right		      = time
 
 [bar/ws]
 inherit                   = bar/base
-width                     = 100%
-offset-x                  = 0 
+width                     = 1870
+offset-x                  = 25
+offset-y                  = 10
 modules-left              = workspaces xwindow
 modules-right		      = mpd temperature memory network battery pulseaudio microphone time
 tray-position		      = right
 background		          = ${color.bga}
-border-size		          = 0
+border-size		          = 2
+border-color              = ${color.fg3}
 fg			              = ${color.fg1}
 
 
@@ -81,6 +83,8 @@ label-occupied            = %{T2}ﲭ%{T-}
 label-occupied-padding    = 1
 label-empty               = %{T2}ﱤ%{T-}
 label-empty-padding       = 1
+label-urgent            = %{T2}ﲭ%{T-}
+label-urgent-padding    = 1
 
 
 [module/time]
@@ -199,5 +203,5 @@ format-disconnected = <label-disconnected>
 
 format-packetloss = <label-connected>
 
-label-connected = %essid% 
+label-connected =  
 

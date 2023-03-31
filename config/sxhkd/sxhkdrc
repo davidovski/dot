@@ -18,9 +18,9 @@ super + ctrl + alt + f
 	amixer -D pulse set Master 1+ toggle
 
 {_, super} + XF86MonBrightnessDown
-    xbacklight - {10,1}
+    light -U {10,1}
 {_, super} + XF86MonBrightnessUp
-    xbacklight + {10,1}
+    light -A {10,1}
     
 
 

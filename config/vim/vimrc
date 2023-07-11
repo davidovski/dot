@@ -50,6 +50,7 @@ Plug 'preservim/vim-markdown'
 
 
 Plug 'neoclide/coc.nvim'
+hi CocInlayHint ctermbg=Black ctermfg=Gray                                                         
 
 set updatetime=300
 set signcolumn=yes

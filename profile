@@ -14,5 +14,5 @@ export FILE_MANAGER="/usr/bin/thunar"
 export EMAIL_CLIENT="/usr/bin/thunderbird"
 export EDITOR="/usr/bin/vim"
 
-[ "$(fgconsole 2>/dev/null)" = "1" ] && exec startx -- vt1 &> /dev/null
-
+export XINITRC="$HOME/.config/sx/sxrc"
+[ "$(fgconsole 2>/dev/null)" = "1" ] && exec sx

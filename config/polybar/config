@@ -40,7 +40,7 @@ modules-right		      = time
 
 [bar/ws]
 inherit                   = bar/base
-width                     = 1870
+width                     = 2510
 offset-x                  = 25
 offset-y                  = 10
 modules-left              = workspaces xwindow
@@ -153,7 +153,7 @@ format-prefix-foreground = #5b
 
 [module/temperature]
 type = custom/script
-exec = sensors | awk '/^Core 0:/ { print substr($3, 2) }'
+exec = sensors | awk '/^Tctl:/ { print substr($2, 2) }'
 format-prefix = " "
 interval = 1
 

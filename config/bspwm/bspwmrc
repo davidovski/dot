@@ -11,7 +11,7 @@ xsetroot -cursor_name left_ptr &
 xrdb ~/.Xdefaults
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x picom > /dev/null || picom &
+#pgrep -x picom > /dev/null || picom &
 pgrep -x xss-lock > /dev/null || xss-lock slock &
 #pgrep -x bg.sh > /dev/null || $HOME/.scripts/bg.sh > /dev/null &
 

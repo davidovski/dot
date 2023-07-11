@@ -1,6 +1,6 @@
 #!/bin/sh
 
-configurations="iocane bg bg.gif bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0 zathura"
+configurations="iocane bg bg.gif bspwm cava neofetch mpd mpv ncmpcpp vim sxhkd polybar picom rofi user-dirs.dirs gtk-3.0 zathura sx"
 
 
 save () {
@@ -15,8 +15,7 @@ save () {
     cp $HOME/.profile profile
     cp $HOME/.mkshrc mkshrc
     cp $HOME/.sh_aliases sh_aliases
-    cp $HOME/.Xdefaults Xdefaults
-    cp $HOME/.xinitrc xinitrc
+    cp $HOME/.config/Xdefaults Xdefaults
 
     mkdir -p fonts/TTF
     cp -r $HOME/.fonts/ttf-mononoki fonts/
@@ -59,8 +58,7 @@ load () {
         cp mkshrc $HOME/.mkshrc
         cp sh_aliases $HOME/.sh_aliases
 
-        cp Xdefaults $HOME/.Xdefaults
-        cp xinitrc $HOME/.xinitrc
+        cp Xdefaults $HOME/.config/Xdefaults
         cp profile $HOME/.profile
 
         mkdir -p $HOME/.fonts

@@ -1,0 +1,4 @@
+xrdb ~/.config/Xdefaults
+setxkbmap -option caps:none
+exec bspwm
+

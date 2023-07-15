@@ -8,7 +8,7 @@
 export XDG_RUNTIME_DIR=/tmp/$USER-$(uuidgen)
 alias editor=vim
 
-export TERMINAL="urxvt"
+export TERMINAL="st"
 export BROWSER="/usr/bin/firefox"
 export FILE_MANAGER="/usr/bin/thunar"
 export EMAIL_CLIENT="/usr/bin/thunderbird"

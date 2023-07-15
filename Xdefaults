@@ -55,12 +55,13 @@ dzen2.font: mononoki
 ! Set depth to make transparency work.
 URxvt*depth: 32
 
-*.font: font1,font2,font3,font4
+*.font: mononoki:minispace=False:size=10:antialias=true
 URxvt.font: font1,font2,font3,font4
 URxvt.boldFont: font1:style=bold,font2:style=bold,font3:style=bold,font4
 URxvt.italicFont:font1:style=italic,font2:style=italic,font3:style=italic,font4
 URxvt.boldItalicfont: font1:style=bolditalic,font2:style=bolditalic,font3:style=bolditalic,font4
 
+*.borderpx: 20
 URxvt.internalBorder: 20
 *.cursorBlink: true
 URxvt.cursorUnderline: true
@@ -72,11 +73,9 @@ URxvt.geometry: 92x24
 
 URxvt.urgentOnBell: true
 URxvt.iso14755: false
-urxvt*dynamicColors: on
+URxvt*dynamicColors: on
 
 XTerm*faceName: font1,font2,font3,font4
-
-
 
 !-- Xft settings -- !
 Xft.dpi:        112
@@ -85,7 +84,7 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
-URxvt.perl-ext-common: resize-font,config-reload
+URxvt.perl-ext-common: resize-font
 
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1

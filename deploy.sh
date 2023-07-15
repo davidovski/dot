@@ -79,11 +79,16 @@ load () {
         cp -r icons/* $HOME/.local/share/icons/
         cp .local/share/kaomoji ~/.local/share/
 
-        git clone https://github.com/simmel/urxvt-resize-font /tmp/urxvt-resize-font
         mkdir -p ~/.urxvt/ext/
+
+        git clone https://github.com/simmel/urxvt-resize-font /tmp/urxvt-resize-font
         cp /tmp/urxvt-resize-font/resize-font ~/.urxvt/ext/
 
         cd slock
+        ./deploy.sh
+        cd -
+
+        cd st
         ./deploy.sh
         cd -
 

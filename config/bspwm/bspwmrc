@@ -8,7 +8,7 @@ BORDER=2
 
 hsetroot -solid $COLOR_BACKGROUND &
 xsetroot -cursor_name left_ptr &
-xrdb ~/.Xdefaults
+xrdb ~/.config/Xdefaults
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 #pgrep -x picom > /dev/null || picom &

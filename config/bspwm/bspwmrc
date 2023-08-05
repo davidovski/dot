@@ -10,6 +10,10 @@ hsetroot -solid $COLOR_BACKGROUND &
 xsetroot -cursor_name left_ptr &
 xrdb ~/.config/Xdefaults
 
+pgrep -x pipewire > /dev/null || pipewire &
+pgrep -x pipewire-pulse > /dev/null || pipewire-pulse &
+pgrep -x wireplumber > /dev/null || wireplumber &
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 #pgrep -x picom > /dev/null || picom &
 pgrep -x xss-lock > /dev/null || xss-lock slock &

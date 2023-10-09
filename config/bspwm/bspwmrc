@@ -4,20 +4,17 @@ setup=0
 COLOR_BACKGROUND="#282a2e"
 COLOR_PRIMARY="#fefefe"
 COLOR_SECONDARY="#707880"
-BORDER=2
+BORDER=3
 
 hsetroot -solid $COLOR_BACKGROUND &
 xsetroot -cursor_name left_ptr &
 xrdb ~/.config/Xdefaults
 
-pgrep -x pipewire > /dev/null || pipewire &
-pgrep -x pipewire-pulse > /dev/null || pipewire-pulse &
-pgrep -x wireplumber > /dev/null || wireplumber &
-
 pgrep -x sxhkd > /dev/null || sxhkd &
 #pgrep -x picom > /dev/null || picom &
 pgrep -x xss-lock > /dev/null || xss-lock slock &
-#pgrep -x bg.sh > /dev/null || $HOME/.scripts/bg.sh > /dev/null &
+pgrep -x bg.sh > /dev/null || $HOME/.scripts/bg.sh > /dev/null &
+pgrep -x xcompmgr > /dev/null || xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 
 [ -f "$HOME/.config/xrandr.sh" ] && . $HOME/.config/xrandr.sh
 
@@ -32,7 +29,6 @@ done
 for m in $(bspc query -M --names); do
     bspc monitor $m -d ${m}1 ${m}2 ${m}3 ${m}4 ${m}5 ${m}6 ${m}7 ${m}8 ${m}9
 done
-
 
 $HOME/.config/polybar/launch.sh &
 
@@ -50,5 +46,11 @@ bspc config normal_border_color "$COLOR_SECONDARY"
 bspc config active_border_color "$COLOR_SECONDARY"
 bspc config focused_border_color "$COLOR_PRIMARY"
 wmname bspwm 
+
+sleep 1
+
+pgrep -x pipewire > /dev/null || pipewire &
+pgrep -x pipewire-pulse > /dev/null || pipewire-pulse &
+pgrep -x wireplumber > /dev/null || wireplumber &
 
 $HOME/.scripts/start-mpd

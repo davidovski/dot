@@ -4,7 +4,7 @@
 
 # mic
 super + BackSpace
-	pactl list sources | grep -qi 'Mute: yes' && pactl set-source-mute 2 false || pactl set-source-mute 2 true
+	$HOME/.scripts/toggle-mute.sh
 
 super + ctrl + alt + f
 	pactl list sources | grep -qi 'Active Port: analog-input-rear-mic' && pactl set-source-port 2 analog-input-front-mic || pactl set-source-port 2 analog-input-rear-mic
@@ -144,24 +144,24 @@ super + alt + t
 
 # record screen
 super + alt + s
-	.scripts/screenrecord
+	$HOME/.scripts/screenrecord
 
 #bring up calculator
 super + period
-	.scripts/calculator
+	$HOME/.scripts/calculator
 
 # file search and open
 super + slash
    websearch 
 shift + super + slash
-	bspc rule -a \* -o state=floating && $TERMINAL -e ~/.scripts/fzf_menu.sh 
+	bspc rule -a \* -o state=floating && $TERMINAL -e $HOME/.scripts/fzf_menu.sh 
 
 # Calendar
 super + c
-	bspc rule -a \* -o state=floating && $TERMINAL -e calcurse 
+	$HOME/.scripts/calendar
 
 super + comma
-	.scripts/notepad
+	$HOME/.scripts/notepad
 
 ###################
 # mpd server	  #
@@ -188,7 +188,7 @@ super + alt + ctrl + backslash
 
 # chooser
 super + alt + ctrl + slash
-	.scripts/mpc_picker
+	$HOME/.scripts/mpc_picker
 # volume
 super + alt + ctrl + Next
 	mpc volume -10

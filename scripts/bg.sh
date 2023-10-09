@@ -1,4 +1,8 @@
 #!/bin/sh
+
+feh --bg-fill ~/.config/bg.png
+exit
+
 setbg="feh --force-aliasing --bg-tile "
 
 image=~/.config/bg.gif

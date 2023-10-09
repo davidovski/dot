@@ -140,7 +140,7 @@ label-muted               = "%{T3} %{T-}--%"
 type = custom/script
 exec = pactl list sources | grep -qi 'Mute: yes' && echo "" || echo ""
 interval = 1
-click-left =  pactl list sources | grep -qi 'Mute: yes' && pactl set-source-mute 2 false || pactl set-source-mute 2 true
+click-left = $HOME/.scripts/toggle-mute.sh
 
 [module/vpn]
 type = custom/script

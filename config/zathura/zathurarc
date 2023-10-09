@@ -30,5 +30,3 @@ set selection-clipboard clipboard
 set guioptions none
 
 set recolor true
-
-set first-page-column 1:1

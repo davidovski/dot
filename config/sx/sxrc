@@ -1,4 +1,4 @@
-setxkbmap -option caps:backspace
-xmodmap -e "clear Lock"
+xrdb ~/.config/Xdefaults
+setxkbmap -option caps:none
 exec bspwm
 

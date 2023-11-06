@@ -2,49 +2,75 @@
 import sys
 import numpy as np
 import os
+from Xlib import X, display
+from Xlib.ext import randr
 
-if len(sys.argv) < 3:
-    print("Usage: tablet [dev number] [property number] [scale factor] [aspect ratio]")
+import subprocess
+import re
+
+# this is horriffic, gets the list of all screens
+screens = [ (lambda s: [int(x) for x in (s.split("+")[1], s.split("+")[2], s.split("x")[0].split("/")[0], s.split("x")[1].split("/")[0])])(l.split(" ")[3]) for l in str(subprocess.check_output(["xrandr", "--listmonitors"])).split("\\n") if len(l.split(" ")) > 2]
+
+#if len(sys.argv) < 3:
+#    print("Usage: tablet [dev number] [property number] [scale factor] [aspect ratio]")
 
 #Arguments
-dev = sys.argv[1]
-prop = sys.argv[2]
-scale = float(sys.argv[3])
-tablet_ratio = (lambda s: float(s[0]) / float(s[1]))(sys.argv[4].split(":")) if len(sys.argv) > 4 else 16/9
+scale = float(sys.argv[1]) if len(sys.argv) > 1 else 1
+#tablet_ratio = (lambda s: float(s[0]) / float(s[1]))(sys.argv[4].split(":")) if len(sys.argv) > 4 else 16/9
+tablet_ratio = 16/9
 
-#Layout of screens: (x, y, w, h)
-#screens = [
-#	(0, 0, 1280, 1024),
-#	(1280, 0, 2560, 1440),
-#	(3840, 0, 1080, 1920),
-#	(4920, 0, 1080, 1920),
-#]
 
-screens = [
-	(0, 0, 1920, 1080),
-	(1920, 0, 2560, 1440),
-]
+input_items = list(filter(lambda i: i[0], zip(subprocess.check_output(["xinput", "list", "--id-only"]).decode("ascii").split("\n"), subprocess.check_output(["xinput", "list", "--name-only"]).decode("ascii").split("\n"))))
 
-#TODO find this with xrandr
+input_items = sorted(input_items, key=(lambda i: int(i[0])))
 
-target = screens[1]
+print("Input devices found:")
+
+for item in input_items:
+    print(f"{item[0]}: {item[1]}")
+
+print()
+dev = input("Select input device (id) to use: ")
+
+
+prop = [ re.search(r"\((.+)\)", line).group(1) for line in subprocess.check_output(["xinput", "list-props", dev]).decode("ascii").split("\n") if re.search("Coordinate Transformation Matrix", line) ][0]
+
+if len(screens) == 1:
+    target = screens[1]
+else:
+    print("Multiple screens detected:\n")
+    for i, screen in enumerate(screens):
+        print(f"{i}: {screen}")
+
+    print()
+    targetno = input("Enter screen to map to (0): ")
+
+    if targetno:
+        target = screens[int(targetno)]
+    else:
+        target = screens[0]
+
+
 
 #Physical offset of the selected screen
 offsetx = target[0]
 offsety = target[1]
 
 #Size of the full screen areas
-sh = 1080
-sw = 1920 + 2560
-#TODO calculate using list of screens
+sh, sw = 0, 0
+
+for screen in screens:
+    if screen[0]+screen[2] > sw:
+        sw = screen[0] + screen[2]
+    if screen[1]+screen[3] > sh:
+        sh = screen[1] + screen[3]
 
 #Aspect ratio of the tablet, to avoid weird scaling problems
 
 #Size of the tablet
-#Prioritize the with when scaling between aspect ratios
+#Prioritize the width when scaling between aspect ratios
 tw = target[2]  
 th = tw / tablet_ratio
-print(tw, "x", th)
 
 if "-r" in sys.argv or "-l" in sys.argv:
     th = target[2] 
@@ -84,5 +110,7 @@ if "-l" in sys.argv:
 arr = np.squeeze(np.asarray(transform))
 
 
-os.system(" ".join(["xinput set-prop", dev, prop, " ".join([str(x) for x in [arr[0, 0], arr[0, 1], arr[0, 2], arr[1, 0], arr[1, 1], arr[1, 2], arr[2, 0], arr[2, 1], arr[2, 2]]])]))
+cmd = " ".join(["xinput set-prop", dev, prop, " ".join([str(x) for x in [arr[0, 0], arr[0, 1], arr[0, 2], arr[1, 0], arr[1, 1], arr[1, 2], arr[2, 0], arr[2, 1], arr[2, 2]]])])
+print(cmd)
+os.system(cmd)
 #alias tablet2="xinput set-prop 18 156 2.45 0 -0.725 0 2.45 -0.725 0 0 1"

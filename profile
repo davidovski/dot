@@ -11,8 +11,10 @@ alias editor=vim
 export TERMINAL="st"
 export BROWSER="/usr/bin/firefox"
 export FILE_MANAGER="/usr/bin/thunar"
-export EMAIL_CLIENT="/usr/bin/thunderbird"
+export EMAIL_CLIENT="/usr/bin/claws-mail"
 export EDITOR="/usr/bin/vim"
+
+export JAVA_HOME=/usr/lib/jvm/java-19-openjdk/
 
 export XINITRC="$HOME/.config/sx/sxrc"
 [ "$(fgconsole 2>/dev/null)" = "1" ] && exec sx

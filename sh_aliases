@@ -18,8 +18,6 @@ alias gosumemory-default="sudo /home/david/.local/share/gosumemory/gosumemory -p
 
 alias yta="yt-dlp --no-mtime --add-metadata --no-check-certificate --embed-thumbnail -x -f bestaudio/best"
 
-alias suspend="i3lock-fancy -p -t ''; systemctl suspend"
-
 alias vim="nvim"
 #alias tablet2='tablet 18 156 2.4'
 
@@ -75,3 +73,5 @@ passthrough_enable () {
 }
 alias links="links -g -html-g-text-color 0xfefefe -html-g-background-color 0x191919 -font /home/david/.fonts/ttf-mononoki/mononoki-Regular.ttf"
 alias weechat="weechat -d ~/.weechat"
+
+alias manfzf="man -k . | fzf | cut -d'(' -f1 | xargs man"

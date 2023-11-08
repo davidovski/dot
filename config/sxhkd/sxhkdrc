@@ -21,12 +21,11 @@ super + ctrl + alt + f
     light -U {10,1}
 {_, super} + XF86MonBrightnessUp
     light -A {10,1}
-    
 
 
 
 super + r
-	rofi -show drun -show-icons  
+	rofi -show drun -show-icons
 
 super + shift + r
 	rofi -show ssh -show-icons
@@ -35,13 +34,13 @@ super + ctrl + Tab
 	rofi -show window
 
 super + g
-	$HOME/.scripts/toggle-gap.sh	
+	$HOME/.scripts/toggle-gap.sh
 
 super + shift + g
 	$HOME/.scripts/toggle-size-hints.sh
 
 # open terminal
-super + Return 
+super + Return
 	$TERMINAL
 
 # open pdf viewer
@@ -66,6 +65,11 @@ super + m
 # open file manager
 super + n
 	$FILE_MANAGER
+
+# open dmenu iwd
+super + i
+	$HOME/.scripts/dmenu-iwd
+
 
 # open audio mixer
 super + semicolon
@@ -224,6 +228,12 @@ super + f
     [ -z "$(bspc query -N -n focused.floating)" ] && \
         bspc node focused -t floating || \
         bspc node focused -t tiled;
+
+# make the node sticky
+super + d
+    [ -z "$(bspc query -N -n focused.sticky)" ] && \
+        bspc node focused -g sticky=on || \
+        bspc node focused -g stick=off;
 
 super + ctrl + f
 	bspc node -t \~fullscreen

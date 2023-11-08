@@ -4,7 +4,7 @@
 ! #define font1 xft:minecraft enchantment:minispace=False:size=10:antialias=true
 ! #define spacing -2
 
-#define font1 xft:mononoki:minispace=False:size=10:antialias=true
+#define font1 xft:mononoki:minispace=False:size=14:antialias=true
 #define spacing 2
 
 #define font2 xft:MesloLGM Nerd Font Mono:minispace=False:size=10
@@ -100,3 +100,10 @@ URxvt*scrollTtyKeypress: true
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard 
+
+
+*label.renderTable: variable
+*.renderTable.variable.fontName: Sans
+*.renderTable.variable.fontSize: 10
+*.renderTable.variable.fontType: FONT_IS_XFT
+

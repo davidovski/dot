@@ -7,6 +7,8 @@ SEARCH_HISTORY=$HOME/.local/share/search_history
 
 SEARCH=$(cat $SEARCH_HISTORY | dmenu -p "search")
 
+[ -z "$SEARCH" ] && exit 1
+
 echo "$SEARCH" >> $SEARCH_HISTORY
 
 query=$(echo $SEARCH | sed 's/ /+/g')

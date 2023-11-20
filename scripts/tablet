@@ -69,11 +69,11 @@ for screen in screens:
 
 #Size of the tablet
 #Prioritize the width when scaling between aspect ratios
-tw = target[2]  
+tw = target[2]
 th = tw / tablet_ratio
 
 if "-r" in sys.argv or "-l" in sys.argv:
-    th = target[2] 
+    th = target[2]
     tw = th / tablet_ratio
 
 #make a variable that will try to make the scale the same over diferent resoultions

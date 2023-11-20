@@ -112,7 +112,10 @@ Plug 'junegunn/fzf.vim'
 nnoremap <F6> :Files<CR>
 nnoremap <F7> :Rg<CR>
 
+
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 

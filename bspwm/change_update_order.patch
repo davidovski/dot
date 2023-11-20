@@ -1,0 +1,55 @@
+
+diff --git a/src/ewmh.c b/src/ewmh.c
+index 52f7e53..bdda6a7 100644
+--- a/src/ewmh.c
++++ b/src/ewmh.c
+@@ -93,7 +93,12 @@ void ewmh_update_current_desktop(void)
+ 	if (mon == NULL) {
+ 		return;
+ 	}
+-	uint32_t i = ewmh_get_desktop_index(mon->desk);
++	ewmh_set_current_desktop(mon->desk);
++}
++
++void ewmh_set_current_desktop(desktop_t *d)
++{
++	uint32_t i = ewmh_get_desktop_index(d);
+ 	xcb_ewmh_set_current_desktop(ewmh, default_screen, i);
+ }
+ 
+diff --git a/src/ewmh.h b/src/ewmh.h
+index 3b50e35..0781eb6 100644
+--- a/src/ewmh.h
++++ b/src/ewmh.h
+@@ -35,6 +35,7 @@ void ewmh_update_number_of_desktops(void);
+ uint32_t ewmh_get_desktop_index(desktop_t *d);
+ bool ewmh_locate_desktop(uint32_t i, coordinates_t *loc);
+ void ewmh_update_current_desktop(void);
++void ewmh_set_current_desktop(desktop_t *d);
+ void ewmh_set_wm_desktop(node_t *n, desktop_t *d);
+ void ewmh_update_wm_desktops(void);
+ void ewmh_update_desktop_names(void);
+diff --git a/src/tree.c b/src/tree.c
+index 52055c5..3762335 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -643,14 +643,18 @@ bool focus_node(monitor_t *m, desktop_t *d, node_t *n)
+ 	}
+ 
+ 	if (m->desk != d) {
++		ewmh_set_current_desktop(d);
++		put_status(SBSC_MASK_DESKTOP_FOCUS, "desktop_focus 0x%08X 0x%08X\n", m->id, d->id);
++
+ 		show_desktop(d);
+ 		set_input_focus(n);
+ 		has_input_focus = true;
+ 		hide_desktop(m->desk);
+ 		m->desk = d;
++
+ 	}
+ 
+-	if (desk_changed) {
++	if (m != mon) {
+ 		ewmh_update_current_desktop();
+ 		put_status(SBSC_MASK_DESKTOP_FOCUS, "desktop_focus 0x%08X 0x%08X\n", m->id, d->id);
+ 	}

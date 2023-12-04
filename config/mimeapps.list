@@ -13,7 +13,6 @@ application/x-extension-shtml=userapp-Firefox-AK3I01.desktop
 application/xhtml+xml=userapp-Firefox-AK3I01.desktop
 application/x-extension-xhtml=userapp-Firefox-AK3I01.desktop
 application/x-extension-xht=userapp-Firefox-AK3I01.desktop
-x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
 
 [Added Associations]
 x-scheme-handler/http=userapp-Firefox-AK3I01.desktop;
@@ -26,3 +25,6 @@ application/x-extension-shtml=userapp-Firefox-AK3I01.desktop;
 application/xhtml+xml=userapp-Firefox-AK3I01.desktop;
 application/x-extension-xhtml=userapp-Firefox-AK3I01.desktop;
 application/x-extension-xht=userapp-Firefox-AK3I01.desktop;
+image/gif=nsxiv.desktop;
+image/png=gimp.desktop;
+image/jpeg=gimp.desktop;

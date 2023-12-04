@@ -73,5 +73,3 @@ passthrough_enable () {
 }
 alias links="links -g -html-g-text-color 0xfefefe -html-g-background-color 0x191919 -font /home/david/.fonts/ttf-mononoki/mononoki-Regular.ttf"
 alias weechat="weechat -d ~/.weechat"
-
-alias manfzf="man -k . | fzf | cut -d'(' -f1 | xargs man"

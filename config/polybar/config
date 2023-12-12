@@ -40,14 +40,14 @@ modules-right		      = time
 
 [bar/ws]
 inherit                   = bar/base
-width                     = 1870
+width                     = 2510
 offset-x                  = 25
 offset-y                  = 10
 modules-left              = workspaces xwindow
 modules-right		      = mpd temperature memory network battery pulseaudio microphone time
 tray-position		      = right
 background		          = ${color.bga}
-border-size		          = 2
+border-size		          = 0
 border-color              = ${color.fg3}
 fg			              = ${color.fg1}
 
@@ -138,9 +138,9 @@ label-muted               = "%{T3} %{T-}--%"
 
 [module/microphone]
 type = custom/script
-exec = pactl list sources | grep -qi 'Mute: yes' && echo "" || echo ""
+exec = amixer get Capture | tail -2 | grep -q off && && echo "" || echo ""
 interval = 1
-click-left = $HOME/.scripts/toggle-mic.sh
+click-left = $HOME/.scripts/toggle-mute.sh
 
 [module/vpn]
 type = custom/script

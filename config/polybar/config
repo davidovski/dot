@@ -138,7 +138,7 @@ label-muted               = "%{T3} %{T-}--%"
 
 [module/microphone]
 type = custom/script
-exec = amixer get Capture | tail -2 | grep -q off && && echo "" || echo ""
+exec = amixer get Capture | tail -2 | grep -q off && echo "" || echo ""
 interval = 1
 click-left = $HOME/.scripts/toggle-mute.sh
 

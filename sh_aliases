@@ -34,7 +34,7 @@ mp4-gif () {
 alias zth="zathura"
 alias nb="nb --blog-dir $BLOG_DIR"
 alias looking-glass-client="looking-glass-client -G input:rawMouse=yes input:escapekey=119 input:autocapture=yes -k -j"
-alias show-keymap="vim qmk_firmware/keyboards/ergo42/keymaps/iksvo/keymap.c"
+alias show-keymap="vim ~/docs/proj/qmk_firmware/keyboards/biacco42/ergo42/keymaps/iksvo/keymap.c"
 
 
 configure () {

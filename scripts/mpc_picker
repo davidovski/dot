@@ -1,4 +1,6 @@
 #!/bin/sh
-chosen=$(mpc listall | dmenu -i -p mpd)
-[ "$chosen" != "" ] || exit
-mpc insert "$chosen"
+selected=$(mpc -f "%title%[\t\t%artist%][\t\t%album%]\t\t%file%" listall | dmenu -i -p mpd)
+[ "$selected" == "" ] && exit
+file=$(printf "%s\n" "$selected" | rev | cut -f1 -d'	' | rev)
+echo "$file"
+mpc insert "$file"

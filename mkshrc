@@ -24,7 +24,7 @@ fi
 [ -f ~/.sh_aliases ] && . ~/.sh_aliases
 
 # parse the current branch and status of git to be added to the prompt
-function parse_git_branch() {
+parse_git_branch() {
         BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
         if [ ! "${BRANCH}" == "" ]
         then
@@ -35,7 +35,7 @@ function parse_git_branch() {
         fi
 }
 
-function parse_git_dirty {
+parse_git_dirty () {
         status=`git status 2>&1 | tee`
         dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
         untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
@@ -55,4 +55,4 @@ function parse_git_dirty {
 
 bind '^L=clear-screen'
 
-export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/\~}\e[0;37m\`parse_git_branch\` > \e[0;0m")
+export PS1="[0;97m\${PWD/#\$HOME/\~}[0;37m\`parse_git_branch\` > [0;0m")

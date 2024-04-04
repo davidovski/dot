@@ -14,10 +14,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x xss-lock > /dev/null || xss-lock slock &
 pgrep -x bg.sh > /dev/null || $HOME/.scripts/bg.sh > /dev/null &
-#pgrep -x xcompmgr > /dev/null || xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 
 [ -f "$HOME/.config/xrandr.sh" ] && . $HOME/.config/xrandr.sh
-#xrandr > ~/XRANDR
 
 primary=$(bspc query --monitors -m primary)
 set -- a b c d e f g h i j k l m n o 

@@ -73,7 +73,7 @@ super + i
 
 # open audio mixer
 super + semicolon
-	bspc rule -a \* -o state=floating && $TERMINAL -e pulsemixer 
+	bspc rule -a \* -o state=floating && $TERMINAL -e pulsemixer
 
 # xkill
 ctrl + alt + Escape
@@ -233,7 +233,7 @@ super + f
 super + d
     [ -z "$(bspc query -N -n focused.sticky)" ] && \
         bspc node focused -g sticky=on || \
-        bspc node focused -g stick=off;
+        bspc node focused -g sticky=off;
 
 super + ctrl + f
 	bspc node -t \~fullscreen

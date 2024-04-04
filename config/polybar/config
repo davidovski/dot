@@ -4,8 +4,8 @@ offsety = 24
 
 [color]
 bg = #191919
-bga = #191919
-fg4= #f58d44
+bga = #CC191919
+fg4 = #f58d44
 fg2 = #5f819d
 fg3 = #707880
 fg1 = #fefefe
@@ -40,7 +40,7 @@ modules-right		      = time
 
 [bar/ws]
 inherit                   = bar/base
-width                     = 2510
+width                     = 1870
 offset-x                  = 25
 offset-y                  = 10
 modules-left              = workspaces xwindow

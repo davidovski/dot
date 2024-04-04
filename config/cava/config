@@ -17,7 +17,7 @@
 
 # Manual sensitivity in %. Autosens must be turned off for this to take effect.
 # 200 means double height. Accepts only non-negative values.
-; sensitivity = 200
+; sensitivity = 100
 
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
@@ -56,10 +56,10 @@
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
 # For shmem 'source' will be /squeezelite-AA:BB:CC:DD:EE:FF where 'AA:BB:CC:DD:EE:FF' will be squeezelite's MAC address
-source = auto
+; source = auto
 
-; method = alsa
-; source = hw:Loopback,1
+method = alsa
+ source = hw:Loopback,1
 
 ; method = fifo
 ; source = /tmp/mpd.fifo
@@ -139,15 +139,15 @@ source = auto
 
 # Percentage value for integral smoothing. Takes values from 0 - 100.
 # Higher values means smoother, but less precise. 0 to disable.
-integral = 0
+; integral = 76
 
 # Disables or enables the so-called "Monstercat smoothing" with or without "waves". Set to 0 to disable.
-monstercat = 0
-waves = 0
+monstercat = 1
+; waves = 0
 
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
-gravity = 400
+; gravity = 100
 
 
 # In bar height, bars that would have been lower that this will not be drawn.

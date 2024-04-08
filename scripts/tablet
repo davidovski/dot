@@ -36,7 +36,7 @@ dev = input("Select input device (id) to use: ")
 prop = [ re.search(r"\((.+)\)", line).group(1) for line in subprocess.check_output(["xinput", "list-props", dev]).decode("ascii").split("\n") if re.search("Coordinate Transformation Matrix", line) ][0]
 
 if len(screens) == 1:
-    target = screens[1]
+    target = screens[0]
 else:
     print("Multiple screens detected:\n")
     for i, screen in enumerate(screens):

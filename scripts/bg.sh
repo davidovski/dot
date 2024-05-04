@@ -1,6 +1,6 @@
 #!/bin/sh
 
-feh --bg-fill ~/.config/bg.png
+feh --no-xinerama --bg-fill ~/.config/bg.png
 exit
 
 setbg="feh --force-aliasing --bg-tile "

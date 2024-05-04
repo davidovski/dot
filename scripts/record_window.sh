@@ -14,6 +14,6 @@ position=+$(echo $geom | cut -d'+' -f2- | sed "s/+/,/g")
 filename=$(date +"$HOME/pics/screenshot/%F_%T.mp4")
 
 echo $size and $position
-ffmpeg -y -f x11grab -video_size $size -i $position $filename
+ffmpeg -y -f x11grab -video_size $size -i $position -f pulse -i default $filename
 
 rm $info

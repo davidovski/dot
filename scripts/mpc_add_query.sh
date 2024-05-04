@@ -1,5 +1,7 @@
 #!/bin/sh
 
 query=${1}
-cd ~/music
-find . -iname "*$query*" -type f | while read -r line; do echo "$line"; mpc insert "${line#./}"; done
+mpc -f "%title%[\t\t%artist%][\t\t%album%]\t\t%file%" listall | grep -i "${query}" | rev | cut -f1 -d'	' | rev | while read -r track; do
+    echo "$track"
+    mpc insert "$track"
+done

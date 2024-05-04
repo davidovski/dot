@@ -6,28 +6,28 @@
     urgent-background: @foreground2;
     urgent-foreground: @foreground;
 
-    alternate-active-background: @background;
+    alternate-active-background: @background2;
     alternate-active-foreground: @foreground;
-    alternate-normal-background: @background;
+    alternate-normal-background: @background2;
     alternate-normal-foreground: @foreground;
-    alternate-urgent-background: @background;
+    alternate-urgent-background: @background2;
     alternate-urgent-foreground: @foreground;
 
-    selected-active-background: @foreground2; 
-    selected-active-foreground: @background2;
+    selected-active-background: @foreground2;
+    selected-active-foreground: @background;
     selected-normal-background: @foreground2;
-    selected-normal-foreground: @background2;
+    selected-normal-foreground: @background;
     selected-urgent-background: @foreground2;
-    selected-urgent-foreground: @background2;
+    selected-urgent-foreground: @background;
 
     text-color:			@foreground;
     border-color:       @foreground;
 
     background-color: #00000000;
-    background: #191919;
-    background2: #191919;
+    background: #191919e0;
+    background2: #19191900;
     foreground: #fefefe;
-    foreground2: #373b41;
+    foreground2: #c5c8c6;
     spacing: 2;
 
     font: "mononoki 12";
@@ -46,7 +46,7 @@
 }
 
 #message {
-    border: 2px 0px 0px;
+    border: 0px 0px 0px;
     border-color: @border-color;
     padding: 1px;
 }
@@ -68,7 +68,7 @@
 
 #listview {
     fixed-height: 0;
-    border: 2px 0px 0px;
+    border: 0px 0px 0px;
     border-color: @border-color;
     spacing: 2px;
     scrollbar: true;

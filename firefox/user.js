@@ -418,3 +418,12 @@ user_pref("browser.privatebrowsing.promoEnabled", false);
 
 // Disable automatic gain control
 user_pref("media.getusermedia.agc_enabled", false);
+
+// Theming
+user_pref("gfx.webrender.all", true);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("userChrome.Tabs.Option6.Enabled", true);
+user_pref("userChrome.Style.ThirdParty.Enabled", true);
+user_pref("userChrome.Linux.Transparency.Medium.Enabled", true);
+
+user_pref("browser.tabs.inTitlebar", 2);

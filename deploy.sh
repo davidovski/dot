@@ -73,16 +73,11 @@ load () {
         git clone https://github.com/vinceliuice/vimix-icon-theme $HOME/.local/src/vimix-icon-theme
         cd $HOME/.local/src/vimix-icon-theme
         ./install.sh
-        cd - 
-    
+        cd -
+
         mkdir -p $HOME/.local/share/icons
         cp -r icons/* $HOME/.local/share/icons/
         cp .local/share/kaomoji ~/.local/share/
-
-        mkdir -p ~/.urxvt/ext/
-
-        git clone https://github.com/simmel/urxvt-resize-font /tmp/urxvt-resize-font
-        cp /tmp/urxvt-resize-font/resize-font ~/.urxvt/ext/
 
         cd slock
         ./deploy.sh

@@ -1,0 +1,8 @@
+@-moz-document url-prefix("about:") {
+    host, :root {
+        --in-content-page-background: transparent !important;
+    }
+    * {
+        background: rgba(25, 25, 25, 255) !important;
+    }
+}

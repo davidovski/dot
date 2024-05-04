@@ -329,7 +329,7 @@ user_pref("browser.user_preferences.moreFromMozilla", false);
 
 // Disable hardware acceleration
 //user_pref("layers.acceleration.disabled", false);
-user_pref("gfx.direct2d.disabled", true);
+//user_pref("gfx.direct2d.disabled", true);
 
 // Disable SSDP
 user_pref("browser.casting.enabled", false);
@@ -415,3 +415,6 @@ user_pref("browser.contentblocking.report.vpn-promo.url", "");
 user_pref("browser.contentblocking.report.vpn-android.url", "");
 user_pref("browser.contentblocking.report.vpn-ios.url", "");
 user_pref("browser.privatebrowsing.promoEnabled", false);
+
+// Disable automatic gain control
+user_pref("media.getusermedia.agc_enabled", false);

@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+: ${user:="tor"}
+
+name="tunnel"
+
+command="/home/david/tunnel.sh"
+command_background="true"
+pidfile="/run/tunnel.pid"
+
+depend() {
+	need sshd
+}

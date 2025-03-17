@@ -1,0 +1,5 @@
+#!/bin/sh
+
+zscroll -l 17 --before-text "♪ " --delay 0.3 \
+		--update-check true "mpc current" &
+wait

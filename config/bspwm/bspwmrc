@@ -29,6 +29,8 @@ for m in $(bspc query -M --names); do
     bspc monitor $m -d ${m}1 ${m}2 ${m}3 ${m}4 ${m}5 ${m}6 ${m}7 ${m}8 ${m}9
 done
 
+bspc config border_radius 16
+
 $HOME/.config/polybar/launch.sh &
 
 bspc config border_width	$BORDER
@@ -47,11 +49,10 @@ bspc config focused_border_color "$COLOR_PRIMARY"
 
 # fix java programs that get confused on a missing name property
 wmname LG3D
+while ! pgrep dbus-daemon > /dev/null; do sleep 1; done
 
-sleep 1
-
-#pgrep -x pipewire > /dev/null || pipewire &
-#pgrep -x pipewire-pulse > /dev/null || pipewire-pulse &
-#pgrep -x wireplumber > /dev/null || wireplumber &
+pgrep -x pipewire > /dev/null || pipewire &
+pgrep -x pipewire-pulse > /dev/null || pipewire-pulse &
+pgrep -x wireplumber > /dev/null || wireplumber &
 
 $HOME/.scripts/start-mpd

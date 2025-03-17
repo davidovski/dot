@@ -61,7 +61,7 @@ URxvt.boldFont: font1:style=bold,font2:style=bold,font3:style=bold,font4
 URxvt.italicFont:font1:style=italic,font2:style=italic,font3:style=italic,font4
 URxvt.boldItalicfont: font1:style=bolditalic,font2:style=bolditalic,font3:style=bolditalic,font4
 
-*.borderpx: 20
+*.borderpx: 32
 URxvt.internalBorder: 20
 *.cursorBlink: true
 URxvt.cursorUnderline: true

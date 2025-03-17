@@ -15,7 +15,11 @@ polybar -m | while read -r mon; do
     export MONITOR=$(echo $mon | cut -d: -f1)
     echo $mon | grep -q "(primary)" && {
         polybar ws &
+
+        polybar right2560 &
+        polybar mpd2560 &
     } || {
-        polybar wsonly &
+        polybar ws &
+        polybar time1080 &
     }
 done

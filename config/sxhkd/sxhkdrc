@@ -118,9 +118,6 @@ super + ctrl + t
 	dmenu -p "toilet" | toilet --font mono12 | sed 's/ /_  _ /g' | xclip -selection clipboard
 super + ctrl + b
 	dmenu -p "eminem says" | xargs /usr/bin/eminem
-# memes
-super + ctrl + alt + c
-	$HOME/.scripts/memeselector
 
 # iocane
 super + shift + Return 

@@ -12,13 +12,14 @@ if [ -n "$1" ]; then
 	if [[ "$WINDOW" =~ .*"$SUB".* ]]; then
 		xdotool key "ctrl+v" 
 	else
-		xdotool key Shift+Insert
+		xdotool key "ctrl+v" 
+		#xdotool key Shift+Insert
 	fi
-#	xdotool type --delay 1 $chosen
+#xdotool type --delay 1 $chosen
 
 #	VAR=$(xclip -o)
 
-#	xdotool type $chosen
+	#xdotool type $chosen
 else
 	notify-send "'$chosen' copied to clipboard." &
 fi

@@ -4,7 +4,6 @@ offsety = 24
 
 [color]
 bg = #191919
-bga = #C0191919
 fg4= #f58d44
 fg2 = #5f819d
 fg3 = #707880
@@ -22,34 +21,73 @@ font-3                    = mononoki:style=Regular:pixelsize=11;3
 font-4                    = MesloLGM Nerd Font Mono:style=Regular:pixelsize=14;2
 font-5                    = Noto Sans Mono CJK TC:style=Medium,Regular;pixelsize=10;2
 
-height                    = 25
-background                = ${color.bga}
+height                    = 32
 
 module-margin		      = 1
 wm-restack                = bspwm
 radius                    = 0
-foreground                = ${color.fg1}
-
-padding-right		      = 1
-
-[bar/wsonly]
-inherit			          = bar/base
-width			          = 100%
-modules-left	          = workspaces
-modules-right		      = time
-
-[bar/ws]
-inherit                   = bar/base
-width                     = 2510
-offset-x                  = 25
-offset-y                  = 10
-modules-left              = workspaces xwindow
-modules-right		      = mpd temperature memory network battery pulseaudio microphone time
-tray-position		      = right
-background		          = ${color.bga}
+background		          = ${color.bg}
 border-size		          = 0
 border-color              = ${color.fg3}
 fg			              = ${color.fg1}
+offset-y                  = 16
+
+padding-right		      = 1
+
+[bar/time]
+inherit			          = bar/base
+modules-center		      = time
+width                     = 80
+
+[bar/time1920]
+inherit                   = bar/time
+offset-x                  = 1798
+
+[bar/time1080]
+inherit                   = bar/time
+offset-x                  = 958
+
+[bar/time2560]
+inherit                   = bar/time
+offset-x                  = 2438
+
+[bar/ws]
+inherit                   = bar/base
+width                     = 245
+offset-x                  = 32
+modules-left              = workspaces 
+tray-position		      = right
+
+[bar/right]
+inherit                   = bar/base
+width                     = 400
+modules-center		      = temperature memory network battery pulseaudio vpn microphone time
+tray-position		      = right
+
+[bar/mpd]
+inherit                   = bar/base
+width                     = 250
+fixed-center              = true
+modules-right		      = mpdctrls
+modules-left		      = mpdsong
+padding		              = 2
+
+[bar/right2560]
+inherit                   = bar/right
+offset-x                  = 2118
+
+[bar/mpd2560]
+inherit                   = bar/mpd
+offset-x                  = 1836
+
+[bar/right1920]
+inherit                   = bar/right
+offset-x                  = 1478
+
+[bar/mpd1920]
+inherit                   = bar/mpd
+offset-x                  = 1046
+
 
 
 [module/wsnumber]
@@ -75,16 +113,16 @@ enable-click = true
 enable-scroll = true
 
 format = <label-state>
-format-padding = 0
-label-monitor = %name%
-label-active             = %{T2}雷%{T-}
-label-active-padding     = 1
+format-padding            = 0
+label-monitor             = %name%
+label-active              = %{T2}雷%{T-}
+label-active-padding      = 1
 label-occupied            = %{T2}ﲭ%{T-}
 label-occupied-padding    = 1
 label-empty               = %{T2}ﱤ%{T-}
 label-empty-padding       = 1
-label-urgent            = %{T2}ﲭ%{T-}
-label-urgent-padding    = 1
+label-urgent              = %{T2}ﲭ%{T-}
+label-urgent-padding      = 1
 
 
 [module/time]
@@ -95,15 +133,25 @@ date                      = "%d %b"
 label                     = %{T2}◷%{T-} %time%
 label-padding             = 0
 
-[module/mpd]
+[module/mpdctrls]
+type                      = internal/mpd
+host                      = 127.0.0.1
+port                      = 6600
+format-online 		      = <icon-prev> <toggle> <icon-next> 
+
+icon-play		  = 
+icon-pause 		  = 
+icon-prev		  = 
+icon-next		  = 
+
+[module/mpdprogress]
 type                      = internal/mpd
 host                      = 127.0.0.1
 port                      = 6600
 
-format-online 		       = <label-song> <icon-prev> <toggle> <icon-next> <bar-progress> 
-label-song 		           = %title%
+format-online 		      = <bar-progress>
 
-bar-progress-width = 12 
+bar-progress-width = 13
 bar-progress-indicator = |
 bar-progress-fill = ─
 bar-progress-empty = ─
@@ -112,14 +160,13 @@ format-online-padding     = 0
 
 format-offline-padding    = 0
 
-label-song-maxlen         = 80
-label-song-ellipsis       = true
-
-icon-play		  =  
 bar-empty         = ─
-icon-pause 		  = 
-icon-prev		  = 
-icon-next		  = 
+
+[module/mpdsong]
+type                      = custom/script
+exec                      = ~/.scripts/mpd-zscroll
+tail                      = true
+interval                  = 0.3
 
 
 [module/pulseaudio]
@@ -203,5 +250,6 @@ format-disconnected = <label-disconnected>
 
 format-packetloss = <label-connected>
 
-label-connected =  
+label-connected = 
+label-disconnected = 
 

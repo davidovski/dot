@@ -1,5 +1,10 @@
 #!/bin/sh
 
-zscroll -l 17 --before-text "♪ " --delay 0.3 \
-		--update-check true "mpc current" &
+if [ ! -z "$@" ]; then
+    mpc -f "%title%" current
+else
+    zscroll -l 14 --before-text "󰎇 " --delay 0.2 \
+		--update-check true "$0 current" -p "     " &
+fi
+
 wait

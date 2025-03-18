@@ -14,12 +14,9 @@ fg1 = #fefefe
 monitor = ${env:MONITOR}
 
 enable-ipc                = true
-font-0                    = mononoki:style=Regular:pixelsize=11;3
-font-1                    = mononoki:style=Regular:pixelsize=15;4
-font-2                    = mononoki:style=Regular:pixelsize=19;5
-font-3                    = mononoki:style=Regular:pixelsize=11;3
-font-4                    = MesloLGM Nerd Font Mono:style=Regular:pixelsize=14;2
-font-5                    = Noto Sans Mono CJK TC:style=Medium,Regular;pixelsize=10;2
+font-0                    = FiraMono Nerd Font:style=Regular,size=10;3
+font-1                    = MesloLGM Nerd Font Mono:style=Regular:pixelsize=14;3
+font-2                    = Noto Sans Mono CJK TC:style=Medium,Regular;pixelsize=10;3
 
 height                    = 32
 
@@ -37,32 +34,42 @@ padding-right		      = 1
 [bar/time]
 inherit			          = bar/base
 modules-center		      = time
-width                     = 80
+width                     = 86
 
 [bar/time1920]
 inherit                   = bar/time
-offset-x                  = 1798
+offset-x                  = 1792
 
 [bar/time1080]
 inherit                   = bar/time
-offset-x                  = 958
+offset-x                  = 952
 
 [bar/time2560]
 inherit                   = bar/time
-offset-x                  = 2438
+offset-x                  = 2432
 
 [bar/ws]
 inherit                   = bar/base
-width                     = 245
+width                     = 248
 offset-x                  = 32
 modules-left              = workspaces 
 tray-position		      = right
 
 [bar/right]
 inherit                   = bar/base
-width                     = 400
-modules-center		      = temperature memory network battery pulseaudio vpn microphone time
+width                     = 420
+modules-center		      = temperature memory network battery pulseaudio vpn microphone
 tray-position		      = right
+padding                   = 1
+
+[bar/right2560]
+inherit                   = bar/right
+offset-x                  = 1980
+
+[bar/right1920]
+inherit                   = bar/right
+offset-x                  = 1340
+
 
 [bar/mpd]
 inherit                   = bar/base
@@ -70,35 +77,15 @@ width                     = 250
 fixed-center              = true
 modules-right		      = mpdctrls
 modules-left		      = mpdsong
-padding		              = 2
-
-[bar/right2560]
-inherit                   = bar/right
-offset-x                  = 2118
+padding		              = 1
 
 [bar/mpd2560]
 inherit                   = bar/mpd
-offset-x                  = 1836
-
-[bar/right1920]
-inherit                   = bar/right
-offset-x                  = 1478
+offset-x                  = 1698
 
 [bar/mpd1920]
 inherit                   = bar/mpd
-offset-x                  = 1046
-
-
-
-[module/wsnumber]
-type                      = custom/scrip80
-exec                      = bspc query -D -d focused --names
-tail                      = true
-interval                  = 0
-format                    = "<label>"
-format-foreground         = ${color.background}
-format-background         = ${color.colorlb}
-format-padding            = 0
+offset-x                  = 1058
 
 [module/xwindow]
 type                      = internal/xwindow
@@ -113,15 +100,14 @@ enable-click = true
 enable-scroll = true
 
 format = <label-state>
-format-padding            = 0
 label-monitor             = %name%
-label-active              = %{T2}雷%{T-}
+label-active              = %{T2}%{T-}
 label-active-padding      = 1
-label-occupied            = %{T2}ﲭ%{T-}
+label-occupied            = %{T2}%{T-}
 label-occupied-padding    = 1
-label-empty               = %{T2}ﱤ%{T-}
+label-empty               = %{T2}%{T-}
 label-empty-padding       = 1
-label-urgent              = %{T2}ﲭ%{T-}
+label-urgent              = %{T2}%{T-}
 label-urgent-padding      = 1
 
 
@@ -130,7 +116,7 @@ type                      = internal/date
 interval                  = 10
 time                      = "%H:%M"
 date                      = "%d %b"
-label                     = %{T2}◷%{T-} %time%
+label                     = %{T2}%{T-} %time%
 label-padding             = 0
 
 [module/mpdctrls]
@@ -177,15 +163,15 @@ label-volume              = %percentage:3:3%%
 use-ui-max                = false
 interval                  = 3
 
-ramp-volume-0             = ""
-ramp-volume-1             = ""
-ramp-volume-2             = ""
+ramp-volume-0             = "󰕿"
+ramp-volume-1             = "󰖀"
+ramp-volume-2             = "󰕾"
 
-label-muted               = "%{T3} %{T-}--%"
+label-muted               = "%{T3}󰝟 %{T-}--%"
 
 [module/microphone]
 type = custom/script
-exec = amixer get Capture | tail -2 | grep -q off && echo "" || echo ""
+exec = amixer get Capture | tail -2 | grep -q off && echo " " || echo " "
 interval = 1
 click-left = $HOME/.scripts/toggle-mute.sh
 
@@ -245,11 +231,16 @@ interface = wlan0
 udspeed-minwidth = 5
 accumulate-stats = true
 unknown-as-up = true
-format-connected = <label-connected>
+format-connected = <ramp-signal>
 format-disconnected = <label-disconnected>
 
-format-packetloss = <label-connected>
+format-packetloss = 󰤫
 
-label-connected = 
-label-disconnected = 
+ramp-signal-0 = 󰤯
+ramp-signal-1 = 󰤟
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
+
+label-disconnected = 󰤯
 

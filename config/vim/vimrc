@@ -41,6 +41,10 @@ call plug#begin()
 
 Plug 'preservim/nerdtree'
 nnoremap <F5> :NERDTree<CR>
+let NERDTreeMinimalUI=1
+
+Plug 'ryanoasis/vim-devicons'
+set encoding=UTF-8
 
 Plug 'preservim/vim-markdown'
 "let g:vim_markdown_math = 1
@@ -116,6 +120,20 @@ nnoremap <F7> :Rg<CR>
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 Plug 'tpope/vim-fugitive'
+
+Plug 'yggdroot/indentline'
+
+Plug 'yuttie/comfortable-motion.vim'
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+
+let g:comfortable_motion_interval = 2000.0/60
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 2.0
+
+Plug 'myusuf3/numbers.vim'
+
+let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
 
 call plug#end()
 

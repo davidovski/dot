@@ -1,6 +1,29 @@
-#!/bin/sh
-selected=$(mpc -f "%title%[\t\t%artist%][\t\t%album%]\t\t%file%" listall | dmenu -i -p mpd)
-[ "$selected" == "" ] && exit
-file=$(printf "%s\n" "$selected" | rev | cut -f1 -d'	' | rev)
-echo "$file"
-mpc insert "$file"
+#!/usr/bin/dash
+format="<b>%title%</b>\t%artist%\t%album%\t%file%"
+
+columns="$(mpc -f "$format" listall \
+    | column -t -s'	' \
+        -C title,width=10,trunc \
+        -C artist,width=10,trunc \
+        -C album,width=10,trunc \
+        -C file \
+    | sed 's/&/&amp;/g'
+)"
+
+np=$(printf "%s" "$columns" | grep "$(mpc -f '%title%' current)" | head -1)
+echo "$np"
+selected=$(
+        printf "%s" "$columns" | rofi -dmenu -i \
+                -multi-select \
+                -markup-rows \
+                -p " " \
+                -ballot-selected-str " " \
+                -ballot-unselected-str "  " \
+                -select "$np"
+    )
+[ -z "$selected" ] && exit
+echo "$selected" | while read -r option; do 
+    file=$(printf "%s\n" "$option" | awk -F'  ' '{print $NF}' | sed 's/^\s*//g')
+    echo ${file}
+    mpc insert "$file"
+done

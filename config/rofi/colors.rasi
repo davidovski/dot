@@ -13,11 +13,11 @@
     alternate-urgent-background: @background2;
     alternate-urgent-foreground: @foreground;
 
-    selected-active-background: @foreground2;
+    selected-active-background: @foreground3;
     selected-active-foreground: @background;
-    selected-normal-background: @foreground2;
+    selected-normal-background: @foreground3;
     selected-normal-foreground: @background;
-    selected-urgent-background: @foreground2;
+    selected-urgent-background: @foreground3;
     selected-urgent-foreground: @background;
 
     text-color:			@foreground;
@@ -26,11 +26,13 @@
     background-color: #00000000;
     background: #191919;
     background2: #191919;
+    background3: #282a2e;
     foreground: #fefefe;
     foreground2: #c5c8c6;
-    spacing: 2;
+    foreground3: #373b41;
+    spacing: 4;
 
-    font: "mononoki 12";
+    font: "FiraMono Nerd Font 12";
 }
 
 #window {
@@ -61,7 +63,7 @@
 
 #textbox-prompt-colon {
     expand: false;
-    str: ":";
+    str: "";
     margin: 0px 0.3em 0em 0em;
     text-color: @normal-foreground;
 }
@@ -75,9 +77,14 @@
     padding: 2px 0px 0px;
 }
 
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
 #element {
     border: 0;
-    padding: 1px;
+    padding: 6px;
 }
 
 #element.normal.normal {

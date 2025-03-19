@@ -25,7 +25,7 @@ super + ctrl + alt + f
 
 
 super + r
-	rofi -show drun -show-icons
+    $HOME/.scripts/launcher
 
 super + shift + r
 	rofi -show ssh -show-icons

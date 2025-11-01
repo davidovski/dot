@@ -57,7 +57,7 @@ dzen2.font: mononoki
 URxvt*depth: 32
 
 ! *.font: mononoki:minispace=False:size=10:antialias=true
-*.font: FiraMono Nerd Font:minispace=False:size=10:antialias=true
+*.font: FiraMono Nerd Font:size=10:antialias=true
 
 URxvt.font: font1,font2,font3,font4
 URxvt.boldFont: font1:style=bold,font2:style=bold,font3:style=bold,font4

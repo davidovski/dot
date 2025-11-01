@@ -75,6 +75,10 @@ super + i
 super + semicolon
 	bspc rule -a \* -o state=floating && $TERMINAL -e pulsemixer 
 
+# xrandr switcher
+super + apostrophe
+	$HOME/.scripts/xrandr.sh
+
 # xkill
 ctrl + alt + Escape
 	xkill

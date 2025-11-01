@@ -7,7 +7,7 @@ esac
 export VIMINIT="source ~/.config/vim/vimrc"
 export NVIMINIT="source ~/.config/vim/vimrc"
 
-HISTFILE="$HOME/.mksh_history"
+HISTFILE="/tmp/.mksh_history$$"
 HISTSIZE=5000
 
 if [ -x /usr/bin/dircolors ]; then

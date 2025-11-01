@@ -15,6 +15,7 @@ pgrep -x picom > /dev/null || picom &
 pgrep -x xss-lock > /dev/null || xss-lock slock &
 pgrep -x bg.sh > /dev/null || $HOME/.scripts/bg.sh > /dev/null &
 
+[ -f "$HOME/.scripts/xrandr.sh" ] && . $HOME/.scripts/xrandr.sh
 [ -f "$HOME/.config/xrandr.sh" ] && . $HOME/.config/xrandr.sh
 
 primary=$(bspc query --monitors -m primary)

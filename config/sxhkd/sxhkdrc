@@ -11,11 +11,14 @@ super + ctrl + alt + f
 
 #Volume Control
 {XF86AudioLowerVolume,super + Next}
-	amixer -D pulse sset Master 5%-
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
 {XF86AudioRaiseVolume,super + Prior}
-	amixer -D pulse sset Master 5%+
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
 {XF86AudioMute}
-	amixer -D pulse set Master 1+ toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super + alt + ctrl + button{4,5}
+    pactl set-sink-volume @DEFAULT_SINK@ {+,-}1%
 
 {_, super} + XF86MonBrightnessDown
     light -U {10,1}
@@ -30,7 +33,7 @@ super + r
 super + shift + r
 	rofi -show ssh -show-icons
 
-super + ctrl + Tab
+super + alt + Tab
 	rofi -show window
 
 super + g
@@ -113,15 +116,16 @@ super + ctrl + c
 
 # stuff
 super + ctrl + m
-	dmenu -p "i am stuff" | xargs /usr/bin/stuff 
+	dmenu -p "i am stuff" | xargs /usr/local/bin/stuff 
 
 super + ctrl + n
-	dmenu -p "i am big chungus" | xargs /usr/bin/chungus
+	dmenu -p "i am big chungus" | xargs /usr/local/bin/chungus
+
+super + ctrl + b
+	dmenu -p "eminem says" | xargs /usr/bin/local/eminem
 
 super + ctrl + t
 	dmenu -p "toilet" | toilet --font mono12 | sed 's/ /_  _ /g' | xclip -selection clipboard
-super + ctrl + b
-	dmenu -p "eminem says" | xargs /usr/bin/eminem
 
 # iocane
 super + shift + Return 

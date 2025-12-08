@@ -1,7 +1,7 @@
 #version 330
 
 float maxoff = 10;
-float minoff = 2;
+float minoff = 0;
 float hue = 0.3;
 
 float block_max = 500;
@@ -18,12 +18,9 @@ float max_opacity = 0.9;
 float opacity_threshold(float opacity)
 {
   // if statement jic?
-  if (opacity >= max_opacity)
-  {
+  if (opacity >= max_opacity) {
     return 1.0;
-  }
-  else 
-  {
+  } else {
     return min(1, opacity/max_opacity);
   }
 
@@ -96,24 +93,20 @@ vec4 anim(float alpha) {
     offset_color.z = hueShift(texelFetch(tex, ivec2(uvb), 0).xyz, hue).z;
 
     offset_color.xyz = hueShift(offset_color.xyz, -hue);
-    
+
     // Set the new color
     vec4 c;
     c.w = texelFetch(tex, ivec2(uvr), 0).w;
     c.xyz = offset_color;
 
-    return default_post_processing(c);
+    return c;
 }
 
 vec4 window_shader() {
     vec4 c = texelFetch(tex, ivec2(texcoord), 0);
     c = default_post_processing(c);
     float opacity = opacity_threshold(c.w);
-    if (opacity != 1.0)
-    {
-        c = anim(opacity);
-    }
-    //c = anim(opacity);
+    c = anim(opacity);
     return default_post_processing(c);
 }
 

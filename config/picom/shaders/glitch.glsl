@@ -1,12 +1,11 @@
 #version 330
 
-
 int delta = 20;
-float barh = 0.02;
-float barw = 0.4;
-int nbar = 16;
+float barh = 0.05;
+float barw = 0.6;
+int nbar = 8;
 
-float maxoff = 5;
+float maxoff = 32;
 float minoff = 2;
 
 in vec2 texcoord;             // texture coordinate of the fragment

@@ -7,6 +7,8 @@ float hue = 0.3;
 float block_max = 500;
 float block_min = 200;
 
+float pixelate_size = 3;
+
 in vec2 texcoord;             // texture coordinate of the fragment
 uniform sampler2D tex;        // texture of the window
 
@@ -33,6 +35,15 @@ float random(float n) {
 
 float rand_offset(float b, float off) {
     return (random(b*64) - 0.5) * (off*2);
+}
+
+vec4 alpha_effect(vec4 pix, vec2 coord) {
+    if (random(coord.x * random(coord.y / 100)) < pix.w) {
+        pix.w = 1;
+        return pix;
+    }
+    return vec4(0, 0, 0, 0);
+
 }
 
 vec3 hueShift( vec3 color, float hueAdjust ){
@@ -96,7 +107,7 @@ vec4 anim(float alpha) {
 
     // Set the new color
     vec4 c;
-    c.w = texelFetch(tex, ivec2(uvr), 0).w;
+
     c.xyz = offset_color;
 
     return c;
@@ -107,6 +118,9 @@ vec4 window_shader() {
     c = default_post_processing(c);
     float opacity = opacity_threshold(c.w);
     c = anim(opacity);
-    return default_post_processing(c);
+    c.w = opacity;
+    c = alpha_effect(c, ceil(texcoord / pixelate_size) * pixelate_size);
+    //c = default_post_processing(c);
+    return c;
 }
 

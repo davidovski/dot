@@ -1,6 +1,12 @@
  #!/bin/sh
+
 filename=$(date +"$HOME/pics/screenshot/%F_%T.png")
-maim -su $filename && bspc rule -a \* -o state=floating && feh -Z $filename
+
+if xisxwayland; then
+    grim -g "$(slurp)" $filename
+else
+    maim -su $filename && bspc rule -a \* -o state=floating
+fi && feh -Z $filename
 
 
 

@@ -1,0 +1,81 @@
+/* Color Palette matched from Polybar */
+@define-color bg #191919;
+@define-color fg1 #fefefe;
+@define-color fg2 #5f819d;
+@define-color fg3 #707880;
+@define-color fg4 #f58d44;
+@define-color fg5 #8c9440;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "FiraMono Nerd Font", "MesloLGM Nerd Font Mono", "Noto Sans Mono CJK TC", "Simple Analog Clock Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @bg;
+    color: @fg1;
+    border-bottom: @fg1 2px solid;
+}
+
+/* Common module padding */
+#workspaces,
+#clock,
+#mpd,
+#custom-mpdsong,
+#wireplumber,
+#custom-microphone,
+#custom-vpn,
+#temperature,
+#memory,
+#battery,
+#network,
+#tray {
+    padding: 0px 8px;
+    margin: 0px 2px;
+}
+
+/* Workspaces Styling */
+#workspaces button {
+    padding: 0 4px;
+    color: @fg3;
+    background: transparent;
+}
+
+#workspaces button.active {
+    color: @fg1;
+}
+
+#workspaces button.urgent {
+    color: @fg4;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom VPN underline effect */
+#custom-vpn {
+    color: @fg1;
+    border-bottom: 2px solid #268bd2;
+}
+
+#custom-analog-clock {
+  font-family: "SimpleAnalogClockFont";
+  font-size: 16px;
+  padding: 0 8px;
+  color: @fg1;
+}
+
+#privacy {
+    animation-name: pusle;
+    animation-duration: 500ms;
+    color: @fg4;
+}
+
+@keyframes pulse {
+  from {color: @fg1;}
+  to {color: @fg4;}
+}

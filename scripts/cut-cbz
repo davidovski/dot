@@ -1,0 +1,78 @@
+#!/bin/sh
+#
+# take a comicbook file and cut double spread landscape pages
+# to single spread vertical ones
+#
+# usage: cut-cbz
+
+pbar () {
+    command -v hbar &> /dev/null && {
+        hbar $* &
+    }
+    return 0
+}
+
+cutcbz () {
+    i=0
+    [ $# = 0 ] && exit 1
+    infile="$(realpath "$1")"
+    outfile="${infile%.cbz}.cut.cbz"
+
+    intmp=/tmp/vol$$
+    outtmp=/tmp/vol$$-out
+
+    rm -rf $intmp $outtmp
+    mkdir -p $intmp $outtmp
+
+    pbar; set -- $(unzip -l "$infile" | tail -1)
+    unzip -d $intmp "$infile" | while IFS= read -r line; do
+        pbar -T "extracting" $i $2
+        i=$((i+1))
+done
+
+
+    set -- $(ls -1 $intmp/ | sort -n)
+    total=$#
+    i=$(printf "%05d" "0")
+    for page in $*; do
+        page="$intmp/$page"
+        pbar -T "cutting" $i $total
+        set -- $(identify "$page")
+        ratio=$(echo $3 | sed 's@x@/@')
+
+        [ "$(($ratio))" = "1" ] && {
+            left=$i
+            i=$(echo "$i + 1" | bc | xargs printf "%05d")
+
+            convert "$page" -crop 2@x1 $outtmp/out-%d.png
+            mv $outtmp/out-0.png $outtmp/$left.png
+            mv $outtmp/out-1.png $outtmp/$i.png
+        } || {
+            cp "$page" "$outtmp/$i.png"
+        }
+
+        i=$(echo "$i + 1" | bc | xargs printf "%05d")
+    done
+    pbar -T "cutting" $total $total
+
+
+    cd $outtmp
+
+    i=0; total=$(ls -1 *.png | wc -l)
+    zip "$outfile" *.png | while IFS= read -r line; do
+        pbar -T "compressing" $i $total
+        i=$((i+1))
+done
+
+
+    pbar -t -T "complete" $total $total
+    cd - &>/dev/null
+
+    rm -rf $intmp $outtmp
+
+    printf "written output to %s\n" "$outfile"
+}
+
+for x in "$@"; do
+    cutcbz "$x"
+done

@@ -1,3 +1,6 @@
 #!/bin/sh
 #i3lock-fancy -p -t ''
-slock
+#slock
+
+niri msg action do-screen-transition --delay-ms 600
+swaylock

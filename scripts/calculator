@@ -1,2 +1,4 @@
 #!/bin/sh
-bspc rule -a \* -o state=floating && $TERMINAL -e bc -lq
+#
+#bspc rule -a \* -o state=floating && $TERMINAL -e bc -lq
+rofi -show calc -modi calc -no-show-match -no-sort

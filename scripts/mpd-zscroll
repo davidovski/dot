@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! -z "$@" ]; then
-    mpc -f "%title%" current
+    mpc -f "%title%" current | sed "s/&/&amp;/g"
 else
     zscroll -l 14 --before-text "󰎇 " --delay 0.2 \
 		--update-check true "$0 current" -p "     " &

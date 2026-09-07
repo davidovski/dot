@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#electron /home/x/.local/src/Vesktop/ --enable-features=UseOzonePlatform --enable-features=WebRTCPipeWireCapturer --disable-gpu-sandbox
+ELECTRON_OZONE_PLATFORM_HINT=wayland electron /home/x/.local/src/Vesktop/ --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer --disable-gpu-sandbox
+#flatpak run --env=XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR --filesystem=$XDG_RUNTIME_DIR dev.vencord.Vesktop --enable-features=UseOzonePlatform
+

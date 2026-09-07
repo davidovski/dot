@@ -1,2 +1,16 @@
 #!/bin/bash
-maim -su /dev/stdout |  tee $(date +"$HOME/pics/screenshot/%F_%T.png") | xclip -selection clipboard -t image/png
+
+{
+    if xisxwayland; then
+        grim -g "$(slurp)" -
+    else
+        maim -su /dev/stdout
+    fi
+} | tee $(date +"$HOME/pics/screenshot/%F_%T.png") | {
+    if xisxwayland; then
+        wl-copy
+    else
+        xclip -selection clipboard -t image/png
+    fi
+}
+

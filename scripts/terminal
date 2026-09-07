@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if ! xisxwayland; then
+    bspc rule -a \* -o state=floating && $TERMINAL
+else
+    arg="--class 'float'"
+    if ! [ -z "$@"]; then
+        arg="$arg -e $@"
+    fi
+
+    alacritty msg create-window $arg || alacritty $arg
+fi
+

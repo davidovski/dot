@@ -1,0 +1,21 @@
+#!/bin/bash
+
+name=$1
+
+if [ -z "$name" ]; then
+    echo "Usage: $0 <name>"
+    exit 1
+fi
+
+echo "Saving profile $name"
+
+echo -e "\nprofile $name {" >> ~/.config/kanshi/config
+
+niri msg --json outputs | jq -r '
+  to_entries[] 
+  | select(.value.logical != null) 
+  | "  output \"\(.value.make // "") \(.value.model // "") \(.value.serial // "")\" mode \(.value.logical.width)x\(.value.logical.height) position \(.value.logical.x),\(.value.logical.y)"
+' >> ~/.config/kanshi/config
+
+echo "}" >> ~/.config/kanshi/config
+

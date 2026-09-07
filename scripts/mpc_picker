@@ -1,8 +1,8 @@
 #!/usr/bin/dash
-format="<b>%title%</b>\t%artist%\t%album%\t%file%"
+format="%title%@%artist%@%album%@%file%"
 
 columns="$(mpc -f "$format" listall \
-    | column -t -s'	' \
+    | column -t -s'@' \
         -C title,width=10,trunc \
         -C artist,width=10,trunc \
         -C album,width=10,trunc \
@@ -15,7 +15,6 @@ echo "$np"
 selected=$(
         printf "%s" "$columns" | rofi -dmenu -i \
                 -multi-select \
-                -markup-rows \
                 -p " " \
                 -ballot-selected-str " " \
                 -ballot-unselected-str "  " \

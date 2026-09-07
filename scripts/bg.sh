@@ -1,6 +1,11 @@
 #!/bin/sh
 
-feh --no-xinerama --bg-fill ~/.config/bg.png
+if xisxwayland; then
+    nohup swaybg -i ~/.config/bg.png -m fill &
+else
+    nohup feh --no-xinerama --bg-fill ~/.config/bg.png
+fi
+
 exit
 
 setbg="feh --force-aliasing --bg-tile "
@@ -24,4 +29,4 @@ while : ; do
         $setbg $dir/$i;
         sleep $speed
     done;
-done    
+done

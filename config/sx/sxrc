@@ -1,5 +1,0 @@
-setxkbmap -option caps:backspace
-xmodmap -e "clear Lock"
-xterm -e "xinput list" &
-exec bspwm
-

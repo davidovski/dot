@@ -11,8 +11,7 @@ mpd
 xisxwayland
 grim
 slurp
-wl-copy
-wpctl
+wl-clipboard
 alacritty
 oniri
 rofi-calc

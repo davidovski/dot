@@ -1,4 +1,10 @@
 #!/usr/bin/dash
+
+# ugh just use the  cybolic's script instead of this mess lol
+# https://git.sr.ht/~cybolic/nix-system/blob/main/packages/scripts/rofi/scripts/mpd-search.sh
+exec $HOME/.scripts/mpd-search.sh track
+
+
 format="%title%@%artist%@%album%@%file%"
 
 columns="$(mpc -f "$format" listall \
@@ -22,7 +28,7 @@ selected=$(
     )
 [ -z "$selected" ] && exit
 echo "$selected" | while read -r option; do 
-    file=$(printf "%s\n" "$option" | awk -F'  ' '{print $NF}' | sed 's/^\s*//g')
+    file=$(printf "%s\n" "$option" | awk -F'  ' '{print $NF}' | sed 's/^\s*//g' | sed 's/\&amp;/\&/g')
     echo ${file}
     mpc insert "$file"
 done

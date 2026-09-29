@@ -1,0 +1,2 @@
+#!/bin/sh
+doas rtcwake -m mem -t $(date -d "07:00" +%s)

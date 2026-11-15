@@ -58,19 +58,13 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+    //warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    //focus-follows-mouse
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
@@ -107,7 +101,7 @@ output "eDP-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 24
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -118,32 +112,21 @@ layout {
     center-focused-column "never"
 
     preset-column-widths {
+        proportion 0.333
         proportion 0.5
+        proportion 0.667
         proportion 1.0
     }
 
     preset-window-heights {
         proportion 0.333
         proportion 0.5
+        proportion 0.677
+        proportion 1.0
     }
 
-    // You can change the default width of the new windows.
     default-column-width { proportion 0.5; }
-    // If you leave the brackets empty, the windows themselves will decide their initial width.
-    // default-column-width {}
 
-    // By default focus ring and border are rendered as a solid background rectangle
-    // behind windows. That is, they will show up through semitransparent windows.
-    // This is because windows using client-side decorations can have an arbitrary shape.
-    //
-    // If you don't like that, you should uncomment `prefer-no-csd` below.
-    // Niri will draw focus ring and border *around* windows that agree to omit their
-    // client-side decorations.
-    //
-    // Alternatively, you can override it with a window rule called
-    // `draw-border-with-background`.
-
-    // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
         // off
@@ -153,43 +136,10 @@ layout {
 
         active-color "#fefefe"
         inactive-color "#707880"
-
-        // You can also use gradients. They take precedence over solid colors.
-        // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-        // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
-        // You can use any CSS linear-gradient tool on the web to set these up.
-        // Changing the color space is also supported, check the wiki for more info.
-        //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
-
-        // You can also color the gradient relative to the entire view
-        // of the workspace, rather than relative to just the window itself.
-        // To do that, set relative-to="workspace-view".
-        //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-    }
-
-    // You can also add a border. It's similar to the focus ring, but always visible.
-    border {
-        off
-
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-
-        // Color of the border around windows that request your attention.
-        urgent-color "#9b0000"
-
-        // Gradients can use a few different interpolation color spaces.
-        // For example, this is a pastel rainbow gradient via in="oklch longer hue".
-        //
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can enable drop shadows for windows.
+
     shadow {
         // Uncomment the next line to enable shadows.
         on
@@ -239,23 +189,10 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-
-// This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-spawn-sh-at-startup "oniri --tiling-layout"
-spawn-sh-at-startup "swaybg -i ~/.config/bg.png -m fill"
-spawn-sh-at-startup "swayidle"
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-spawn-sh-at-startup "/usr/libexec/pipewire-launcher"
-spawn-sh-at-startup "start-mpd"
-
-spawn-at-startup "dbus-update-activation-environment" "--all"
+/// start the wayland userservce and all of the essential things
+spawn-sh-at-startup "openrc -U wayland"
 spawn-at-startup "/usr/libexec/xdg-desktop-portal" "-r"
+spawn-at-startup "dbus-update-activation-environment" "--all"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -280,6 +217,19 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+layer-rule {
+    match namespace="^niri-zoom$"
+    block-out-from "screen-capture"
+}
+
+layer-rule {
+    match namespace="^selection$"
+
+    background-effect {
+        //blur true
+    }
 }
 
 // Example: enable rounded corners for all windows.
@@ -348,6 +298,12 @@ binds {
     // or do a four-finger swipe up on a touchpad.
     Mod+Escape repeat=false { toggle-overview; }
 
+    // ─── Zoom (niri-zoom) ───
+    Mod+Alt+WheelScrollUp   cooldown-ms=0 { spawn "~/.local/bin/niri-zoomctl" "in"; }
+    Mod+Alt+WheelScrollDown cooldown-ms=0 { spawn "~/.local/bin/niri-zoomctl" "out"; }
+    Mod+Alt+Z           { spawn "~/.local/bin/niri-zoomctl" "reset"; }
+
+
     Mod+W repeat=false { close-window; }
     Mod+Shift+W repeat=false { spawn-sh "niri msg focused-window | grep '^ *PID:' | awk '{print $2}' | xargs kill -9"; }
 
@@ -356,10 +312,10 @@ binds {
     //Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
 
-    Mod+H     { focus-column-left; }
+    Mod+H     { focus-column-or-monitor-left; }
     //Mod+J     { focus-window-down; }
     //Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+L     { focus-column-or-monitor-right; }
 
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Right { move-column-right; }
@@ -508,7 +464,7 @@ binds {
     Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
-    Mod+Ctrl+C { center-visible-columns; }
+    //Mod+Ctrl+C { center-visible-columns; }
 
     // Finer width adjustments.
     // This command can also:
@@ -555,12 +511,11 @@ binds {
     //Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Alt+Q { quit; }
+    Mod+Ctrl+Q { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
-
 
     Mod+Alt+Ctrl+O { spawn-sh "mpc toggle"; }
     Mod+Alt+Ctrl+P { spawn-sh "mpc next"; }
@@ -581,6 +536,13 @@ binds {
 
     Mod+V { spawn-sh "mpv --player-operation-mode=pseudo-gui $(wl-paste)"; }
     Mod+Z { spawn-sh "$HOME/.scripts/pdf-viewer"; }
+
+    Alt+Mod+C { spawn-sh "$HOME/.scripts/cinema.sh"; }
+
+    Mod+Ctrl+Apostrophe { spawn-sh "ddc-switch-inputs 1"; }
+    Shift+Mod+Ctrl+Apostrophe { spawn-sh "ddc-switch-inputs 2"; }
+
+    Ctrl+Mod+C { spawn-sh "$HOME/.scripts/dmenukaomoji"; }
 }
 
 gestures {
@@ -614,9 +576,17 @@ window-rule {
     default-window-height { proportion 0.5; }
 }
 
+window-rule {
+    match title="xeyes"
+    opacity 0.999
+}
+
 debug {
     honor-xdg-activation-with-invalid-serial
 }
 
 include "tablet.kdl"
+include "outputs.kdl"
+include "autostart.kdl"
 include "overview.kdl"
+include "glitch_01.kdl"

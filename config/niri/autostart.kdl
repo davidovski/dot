@@ -1,0 +1,23 @@
+// music player daemon
+spawn-sh-at-startup "~/.scripts/start-mpd"
+
+// meta+alt+scroll for zoom
+spawn-at-startup "~/.local/bin/niri-zoomd"
+
+// kde conec
+spawn-sh-at-startup "kdeconnectd --replace"
+
+// open tablet driver
+spawn-sh-at-startup "otd-daemon"
+
+// bar
+spawn-at-startup "waybar"
+
+// tiling layout thing
+spawn-sh-at-startup "oniri --tiling-layout"
+
+// spawn in the bg
+spawn-sh-at-startup "swaybg -i ~/.config/bg.png -m fill"
+
+// idle manager
+spawn-sh-at-startup "swayidle"

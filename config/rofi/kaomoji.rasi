@@ -1,0 +1,43 @@
+@import "~/.config/rofi/colors.rasi"
+
+configuration {
+    show-icons: false;
+}
+
+window {
+    width: 60%;
+}
+
+listview {
+    columns: 7;
+    lines: 5;
+    fixed-height: false;
+    dynamic: true;
+    flow: horizontal;
+    layout: vertical;
+    spacing: 8px;
+}
+
+element {
+    padding: 8px;
+}
+
+element-text {
+    font: "Noto Sans 13";
+    vertical-align: 0.5;
+}
+
+#element.normal.normal {
+    background-color: @background;
+    text-color: @foreground;
+}
+
+#element.alternate.normal {
+    background-color: @background3;
+    text-color: @foreground;
+}
+
+#element.selected.normal {
+    background-color: @foreground2;
+    text-color: @background;
+}

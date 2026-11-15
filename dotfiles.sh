@@ -15,7 +15,7 @@ save () {
 
     for c in $(ls config); do
         printf "${GRAY}Copying %s to repo...\n" "$c"
-        cp -r "$config_dir/$c/*" "config/$c/"
+        cp -r "$config_dir/$c"/* "config/$c/"
     done
 
     cp -r "$scripts_dir/*" "scripts/"

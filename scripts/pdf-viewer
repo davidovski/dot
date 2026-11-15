@@ -1,0 +1,9 @@
+#!/bin/sh
+
+curl -SsL --output - "$(
+    if xisxwayland; then
+        wl-copy
+    else
+        xclip -selection clipboard
+    fi
+)" | zathura -

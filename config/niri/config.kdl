@@ -580,6 +580,7 @@ binds {
     Mod+BackSpace { spawn-sh "$HOME/.scripts/toggle-mute.sh"; }
 
     Mod+V { spawn-sh "mpv --player-operation-mode=pseudo-gui $(wl-paste)"; }
+    Mod+Z { spawn-sh "$HOME/.scripts/pdf-viewer"; }
 }
 
 gestures {
@@ -618,3 +619,4 @@ debug {
 }
 
 include "tablet.kdl"
+include "overview.kdl"

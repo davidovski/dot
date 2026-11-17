@@ -1,0 +1,15 @@
+#!/bin/sh
+
+notify-send -i weather-few-clouds-night --expire-time=10000 "Good night!" "I am going to sleep now"
+~/.scripts/brightness.sh save
+
+~/.scripts/brightness.sh -t 5s 0%
+
+~/.scripts/lock &
+loginctl suspend
+
+sleep 1
+
+~/.scripts/brightness.sh restore
+
+

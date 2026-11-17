@@ -1,0 +1,4 @@
+#!/bin/sh
+
+flatpak override --user --filesystem="$XDG_RUNTIME_DIR/discord-ipc-0" sh.ppy.osu
+flatpak run --command="sh" sh.ppy.osu -c "for i in {0..9}; do ln -sf $XDG_RUNTIME_DIR/discord-ipc-0 \$XDG_RUNTIME_DIR/discord-ipc-$i; done; export OSU_EXTERNAL_UPDATE_PROVIDER=1; exec '/app/bin/osu!' "$@""

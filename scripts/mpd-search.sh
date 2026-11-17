@@ -82,7 +82,7 @@ select-w-rofi() {
   item=$1
   width=${2:-50em}
   artist-item-list-to-rofi-list | \
-    rofi-themed -kb-custom-1 'Alt+a' -dmenu -l 25 -markup-rows -format d -no-custom -i -p "Select ${item} to play (Alt+a to only add)" -theme-str "window {width: ${width};}"
+    rofi-themed -kb-custom-1 'Alt+a' -dmenu -l 25 -markup-rows -format d -no-custom -i -p "Select ${item} to play" -theme-str "window {width: ${width};}"
 }
 
 main() {

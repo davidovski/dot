@@ -1,25 +1,20 @@
-#!/bin/bash
+#!/bin/sh
 
-chosen=$(dmenu -i -l 20 < ~/.local/share/kaomoji | sed "s/\t.*//")
+file="$HOME/.local/share/kaomoji"
+selected=$(rofi -dmenu -i -display-columns 1 \
+    -theme "$HOME/.config/rofi/kaomoji.rasi" < "$file") || exit 0
 
-[ "$chosen" != "" ] || exit
+[ -n "$selected" ] || exit 0
 
-# If you run this command with an argument, it will automatically insert the character.
-echo "$chosen" | xclip -selection clipboard
-if [ -n "$1" ]; then
-	SUB="Minecraft"
-	WINDOW=$(xdotool getactivewindow getwindowname)
-	if [[ "$WINDOW" =~ .*"$SUB".* ]]; then
-		xdotool key "ctrl+v" 
-	else
-		xdotool key "ctrl+v" 
-		#xdotool key Shift+Insert
-	fi
-#xdotool type --delay 1 $chosen
+tab=$(printf '\t')
+kaomoji=${selected%%"$tab"*}
 
-#	VAR=$(xclip -o)
-
-	#xdotool type $chosen
+if [ -n "${WAYLAND_DISPLAY-}" ]; then
+    wtype -d 20 "$kaomoji"
 else
-	notify-send "'$chosen' copied to clipboard." &
+    xdotool type --clearmodifiers "$kaomoji"
 fi
+
+line=$(grep -n -F -x -e "$selected" "$file" | cut -d: -f1 | head -n 1)
+f="$(sed "${line}d" $file)"
+printf "%s\n%s" "$selected" "$f" > "$file"

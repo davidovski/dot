@@ -2,7 +2,7 @@
 
 {
     if xisxwayland; then
-        grim -g "$(slurp)" -
+        grim -g "$(slurp -b "#00000000" -c "#fefefeff")" -
     else
         maim -su /dev/stdout
     fi

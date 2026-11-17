@@ -2,6 +2,8 @@
 
 config_dir="$HOME/.config"
 scripts_dir="$HOME/.scripts/"
+kaomoji_file="$HOME/.local/share/kaomoji"
+kaomojis_in_repo=./.local/share/kaomoji
 
 if [ -f /usr/local/lib/sh/colors.sh ]; then
     . /usr/local/lib/sh/colors.sh
@@ -37,6 +39,11 @@ load () {
     done
 
     cp -r scripts/* "$scripts_dir/"
+
+    if [ ! "$(wc -l < ~/.)" -eq "$(wc -l < "$kaomoji_file")" ]; then
+        printf "New kaomojis have been detected, updating kaomoji file"
+        cp "$kaomojis_in_repo" "$kaomoji_file"
+    fi
 }
 
 usage () {

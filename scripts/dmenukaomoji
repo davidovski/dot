@@ -1,7 +1,6 @@
 #!/bin/sh
 
- 230 │ ╭─▶     background-effect {
-file="$HOME/.config/kaomoji"
+file="$HOME/.local/share/kaomoji"
 selected=$(rofi -dmenu -i -display-columns 1 \
     -theme "$HOME/.config/rofi/kaomoji.rasi" < "$file") || exit 0
 

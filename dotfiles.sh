@@ -18,7 +18,7 @@ save () {
         cp -r "$config_dir/$c"/* "config/$c/"
     done
 
-    cp -r "$scripts_dir/*" "scripts/"
+    cp -r "$scripts_dir"/* "scripts/"
 
     git status
 }
@@ -33,10 +33,10 @@ load () {
 
     for c in $(ls config); do
         printf "${GRAY}Copying %s to repo...\n" "$c"
-        cp -r "config/$c/*" "$config_dir/$c/"
+        cp -r "config/$c/"* "$config_dir/$c/"
     done
 
-    cp -r "scripts/*" "$scripts_dir/"
+    cp -r scripts/* "$scripts_dir/"
 }
 
 usage () {

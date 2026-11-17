@@ -224,14 +224,6 @@ layer-rule {
     block-out-from "screen-capture"
 }
 
-layer-rule {
-    match namespace="^selection$"
-
-    background-effect {
-        //blur true
-    }
-}
-
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
